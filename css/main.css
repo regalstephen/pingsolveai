@@ -1,0 +1,418 @@
+/* App Marketing Site - Apple Developer inspired */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --color-text: #1d1d1f;
+  --color-text-muted: #6e6e73;
+  --color-bg: #fff;
+  --color-bg-subtle: #f5f5f7;
+  --color-link: #0066cc;
+  --color-link-hover: #004499;
+  --max-width: 980px;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.47;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Layout */
+.site-header {
+  padding: var(--space-lg) var(--space-xl);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--color-bg);
+}
+
+.site-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.site-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.site-title a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.site-title a:hover {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+.main-nav {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.main-nav a {
+  font-size: 0.9375rem;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-xl);
+}
+
+.site-footer {
+  margin-top: var(--space-2xl);
+  padding: var(--space-xl);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--color-bg-subtle);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.site-footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  justify-content: center;
+}
+
+.site-footer a {
+  color: var(--color-text-muted);
+}
+
+.site-footer a:hover {
+  color: var(--color-link);
+}
+
+/* Landing page */
+.landing-hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+}
+
+.landing-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-md);
+  letter-spacing: -0.02em;
+}
+
+.landing-hero p {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-2xl);
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-xl);
+  justify-items: center;
+  padding: var(--space-xl) 0;
+}
+
+.app-card {
+  display: block;
+  text-align: center;
+  padding: var(--space-lg);
+  border-radius: var(--radius);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.app-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+}
+
+.app-card:focus {
+  outline: 2px solid var(--color-link);
+  outline-offset: 4px;
+}
+
+.app-card-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto var(--space-md);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.app-card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-card-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* TouchBattle marketing page */
+.touchbattle-hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+}
+
+.touchbattle-hero h1 {
+  font-size: 2.75rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-sm);
+  letter-spacing: -0.02em;
+}
+
+.touchbattle-hero .tagline {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-xl);
+}
+
+.touchbattle-hero-image {
+  max-width: 400px;
+  margin: 0 auto var(--space-xl);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* Marketing copy between hero and gameplay */
+.touchbattle-marketing {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-2xl) 0;
+}
+
+.marketing-headline {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 var(--space-md);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.marketing-subhead {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-xl);
+}
+
+.marketing-subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: var(--space-lg) 0 var(--space-sm);
+  color: var(--color-text);
+}
+
+.marketing-subtitle:first-of-type {
+  margin-top: 0;
+}
+
+.marketing-list {
+  margin: 0 0 var(--space-xl);
+  padding-left: 1.5rem;
+  color: var(--color-text);
+}
+
+.marketing-list li {
+  margin-bottom: var(--space-sm);
+  line-height: 1.5;
+}
+
+.marketing-body {
+  margin: 0 0 var(--space-xl);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.marketing-cta {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: var(--space-xl) 0 var(--space-sm);
+  color: var(--color-text);
+}
+
+.marketing-byline {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: var(--space-2xl) 0 var(--space-lg);
+  letter-spacing: -0.02em;
+}
+
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.screenshot-item {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.screenshot-item img {
+  width: 100%;
+  height: auto;
+}
+
+.screenshot-item figcaption {
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.cta-block {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.cta-block a {
+  display: inline-block;
+  padding: var(--space-md) var(--space-xl);
+  background: var(--color-link);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.cta-block a:hover {
+  background: var(--color-link-hover);
+  text-decoration: none;
+}
+
+/* Policy pages */
+.policy-content {
+  padding: var(--space-lg) 0;
+}
+
+.policy-content h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: var(--space-xl) 0 var(--space-md);
+}
+
+.policy-content h3 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  margin: var(--space-lg) 0 var(--space-sm);
+}
+
+.policy-content p {
+  margin: 0 0 var(--space-md);
+  color: var(--color-text);
+}
+
+.policy-content ul {
+  margin: 0 0 var(--space-md);
+  padding-left: 1.5rem;
+}
+
+.policy-content li {
+  margin-bottom: var(--space-xs);
+}
+
+.policy-content .support-faq {
+  margin: 0 0 var(--space-md);
+}
+
+.policy-content .support-faq dt {
+  font-weight: 600;
+  margin: var(--space-lg) 0 var(--space-xs);
+}
+
+.policy-content .support-faq dt:first-child {
+  margin-top: 0;
+}
+
+.policy-content .support-faq dd {
+  margin: 0 0 0 1rem;
+  color: var(--color-text);
+}
+
+.policy-content .last-updated {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xl);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .site-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .landing-hero h1 {
+    font-size: 2rem;
+  }
+
+  .touchbattle-hero h1 {
+    font-size: 2rem;
+  }
+
+  .app-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .screenshots-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: var(--space-md);
+  }
+}
