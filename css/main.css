@@ -16,6 +16,13 @@
   --space-2xl: 3rem;
   --radius: 12px;
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  /* TonerAI Branding */
+  --tonerai-primary: #8FB1B5;
+  --tonerai-primary-light: rgba(143, 177, 181, 0.15);
+  --tonerai-dark: #2c5a62;
+  --tonerai-text: #1e293b;
+  --tonerai-muted: #64748b;
+  --tonerai-border: rgba(143, 177, 181, 0.2);
 }
 
 * {
@@ -389,6 +396,127 @@ main {
   margin-bottom: var(--space-xl);
 }
 
+/* TonerAI Specific Marketing */
+.tonerai-hero {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-xl);
+  background: linear-gradient(135deg, #f8fafb 0%, #edf2f4 100%);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-2xl);
+}
+
+.tonerai-hero h1 {
+  font-size: 3rem;
+  color: var(--tonerai-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.tonerai-tagline {
+  font-size: 1.5rem;
+  color: var(--tonerai-muted);
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+}
+
+.tonerai-hero-img {
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(143, 177, 181, 0.2);
+}
+
+/* Feature Grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  padding: var(--space-2xl) 0;
+}
+
+.feature-card {
+  background: #fff;
+  padding: var(--space-xl);
+  border-radius: var(--radius);
+  border: 1px solid var(--tonerai-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(143, 177, 181, 0.15);
+}
+
+.feature-card h3 {
+  color: var(--tonerai-dark);
+  margin-bottom: var(--space-sm);
+}
+
+/* FAQ Accordion */
+.faq-section {
+  max-width: 800px;
+  margin: var(--space-2xl) auto;
+}
+
+.faq-category {
+  margin-bottom: var(--space-2xl);
+}
+
+.faq-category-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--tonerai-dark);
+  margin-bottom: var(--space-lg);
+  gap: var(--space-sm);
+}
+
+.faq-item {
+  margin-bottom: var(--space-md);
+  border-radius: 16px;
+  border: 1px solid rgba(143, 177, 181, 0.12);
+  background: #fff;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.faq-item[open] {
+  border-color: rgba(143, 177, 181, 0.4);
+  box-shadow: 0 4px 16px rgba(143, 177, 181, 0.15);
+}
+
+.faq-item summary {
+  padding: var(--space-lg);
+  font-weight: 600;
+  color: var(--tonerai-text);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  color: var(--tonerai-primary);
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] summary::after {
+  content: '−';
+}
+
+.faq-content {
+  padding: 0 var(--space-lg) var(--space-lg);
+  color: #475569;
+  line-height: 1.6;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .site-header-inner {
@@ -400,7 +528,7 @@ main {
     font-size: 2rem;
   }
 
-  .touchbattle-hero h1 {
+  .touchbattle-hero h1, .tonerai-hero h1 {
     font-size: 2rem;
   }
 
