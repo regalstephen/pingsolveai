@@ -17,3 +17,5 @@ A static marketing site for apps published on the App Store. Open `index.html` i
 
 1. Add your Privacy Policy, Terms of Service, and Support Policy text to the corresponding HTML files.
 2. Replace the “Download on the App Store” link in `touchbattle.html` with your real App Store URL when the app is live.
+
+##
