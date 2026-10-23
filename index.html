@@ -4,9 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Apps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <script src="js/landing.js" defer></script>
 </head>
-<body>
+<body class="landing">
+  <div class="landing-bg" aria-hidden="true">
+    <div class="landing-bg-layer landing-bg-layer--far"></div>
+    <div class="landing-bg-layer landing-bg-layer--mid"></div>
+    <div class="landing-bg-layer landing-bg-layer--near"></div>
+    <div class="landing-bg-glow"></div>
+    <canvas class="landing-bg-rain"></canvas>
+  </div>
+
   <header class="site-header">
     <div class="site-header-inner">
       <h1 class="site-title"><a href="index.html">My Apps</a></h1>

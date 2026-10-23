@@ -1,0 +1,179 @@
+/*
+ * Landing page (index.html) only, scoped to body.landing so no other page changes.
+ *
+ * Background: a white-to-whisper-blue (#F0F7FF) gradient, three soft blurred
+ * layers that drift with the mouse at different depths, and a pale glow that
+ * follows the cursor. Icons: js/landing.js turns each one into a two-sided
+ * tile that picks up spin from mouse movement and settles facing forward.
+ *
+ * Motion only runs with a mouse (hover + fine pointer) and without reduced
+ * motion. Everywhere else the layers and glow are hidden, the icons stay as
+ * they are, and the static gradient shows.
+ */
+
+body.landing {
+  background: #fff;
+}
+
+.landing-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 18%, #F0F7FF 100%);
+}
+
+/* Layers are larger than the viewport so their edges never show as they move. */
+.landing-bg-layer {
+  position: absolute;
+  inset: -15%;
+  will-change: transform;
+}
+
+.landing-bg-layer--far {
+  background:
+    radial-gradient(34% 30% at 20% 28%, rgba(186, 214, 255, 0.55), transparent 70%),
+    radial-gradient(32% 30% at 82% 74%, rgba(198, 222, 255, 0.55), transparent 70%);
+  filter: blur(50px);
+}
+
+.landing-bg-layer--mid {
+  background:
+    radial-gradient(22% 20% at 74% 24%, rgba(205, 216, 255, 0.6), transparent 70%),
+    radial-gradient(22% 20% at 28% 80%, rgba(194, 226, 250, 0.55), transparent 70%);
+  filter: blur(40px);
+}
+
+.landing-bg-layer--near {
+  background:
+    radial-gradient(13% 12% at 58% 50%, rgba(214, 228, 255, 0.6), transparent 70%),
+    radial-gradient(11% 10% at 90% 16%, rgba(220, 226, 255, 0.55), transparent 70%),
+    radial-gradient(10% 9% at 8% 58%, rgba(208, 232, 255, 0.55), transparent 70%);
+  filter: blur(28px);
+}
+
+/* The glow under the cursor. Positioned by the script with a transform. */
+.landing-bg-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 720px;
+  height: 720px;
+  margin: -360px 0 0 -360px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(176, 210, 255, 1), rgba(204, 226, 255, 0.75) 45%, rgba(228, 240, 255, 0.35) 75%, transparent);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  will-change: transform;
+}
+.landing-bg.is-live .landing-bg-glow { opacity: 1; }
+
+/* Light gray digital rain, drawn by js/landing.js. It sits above the glow so
+   the characters darken against it near the cursor. */
+.landing-bg-rain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Let the background read as one surface behind the header and footer. */
+body.landing .site-header { background: rgba(255, 255, 255, 0.55); }
+body.landing .site-footer { background: rgba(255, 255, 255, 0.5); }
+
+/* ── Type: the colours and lettering of crystallize.prism-on.tokyo ──
+   Public Sans throughout; a deep crystal blue (#3F5BB1) for text and a
+   periwinkle (#9AAFEA) it shades into, as on that site's SNOWFLAKE word. */
+
+body.landing {
+  --crystal: #3F5BB1;
+  --crystal-light: #9AAFEA;
+  --crystal-soft: rgba(63, 91, 177, 0.62);
+  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--crystal);
+}
+
+body.landing .site-title a {
+  color: var(--crystal);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body.landing .landing-hero h1 {
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--crystal);
+  background: linear-gradient(100deg, var(--crystal) 20%, #6F86D6 55%, var(--crystal-light) 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.landing .landing-hero p {
+  color: var(--crystal);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+body.landing .app-card { color: var(--crystal); }
+body.landing .app-card-name {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+body.landing .site-footer {
+  color: var(--crystal-soft);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+/* ── Spinning icons (built by js/landing.js) ───────────── */
+
+body.landing .app-card-icon.is-spinnable {
+  overflow: visible;
+  box-shadow: none;
+  perspective: 700px;
+}
+
+.icon-spin {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.icon-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.icon-face--back { transform: rotateY(180deg); }
+
+/* A light sweep across the face as it turns. --sheen runs 0 to 1. */
+.icon-face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%) no-repeat;
+  background-size: 250% 100%;
+  background-position: calc(var(--sheen, 0) * 100%) 0;
+  opacity: var(--sheen-alpha, 0);
+  pointer-events: none;
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .landing-bg-layer,
+  .landing-bg-glow,
+  .landing-bg-rain { display: none; }
+}
