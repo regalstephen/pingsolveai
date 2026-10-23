@@ -78,8 +78,7 @@ body.landing {
   height: 100%;
 }
 
-/* Let the background read as one surface behind the header and footer. */
-body.landing .site-header { background: rgba(255, 255, 255, 0.55); }
+/* Let the background read as one surface behind the footer. */
 body.landing .site-footer { background: rgba(255, 255, 255, 0.5); }
 
 /* ── Type: the colours and lettering of crystallize.prism-on.tokyo ──
@@ -94,16 +93,12 @@ body.landing {
   color: var(--crystal);
 }
 
-body.landing .site-title a {
-  color: var(--crystal);
-  font-weight: 800;
-  font-size: 1rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+body.landing .landing-hero {
+  padding-top: clamp(4rem, 9vw, 6rem);
 }
 
 body.landing .landing-hero h1 {
-  font-size: clamp(3.5rem, 9vw, 7rem);
+  font-size: clamp(2.5rem, 7.5vw, 5.5rem);
   font-weight: 900;
   line-height: 1;
   letter-spacing: 0.02em;
