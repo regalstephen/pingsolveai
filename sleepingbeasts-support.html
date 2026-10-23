@@ -2,584 +2,507 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How to Play, FAQ &amp; Support — Sleeping Beasts: AR Stealth</title>
-<meta name="description" content="How to play Sleeping Beasts: AR Stealth, plus answers to common questions and how to get help. Sneak past sleeping monsters on your real floor.">
-<meta property="og:title" content="Sleeping Beasts: AR Stealth — How to Play">
-<meta property="og:description" content="Something is asleep on your floor. Creep past it without making a sound.">
-<meta property="og:image" content="https://pingsolveai.com/sleepingbeasts-img/mossy-grump-hero.png">
-<meta name="theme-color" content="#3A3F4A">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/main.css">
-<style>
-:root{
-  --floor-honey:#C89B6C; --floor-light:#E8C99B; --moss-sage:#8FA876;
-  --plush-cream:#E9EDE4; --periwinkle:#8FA8D8; --dream-glow:#BFE3EE;
-  --pumpkin:#D9822B; --lavender:#9B7BC8; --busted:#C94F4F; --night-ink:#3A3F4A;
-  --paper:#f5f5f7; --ink-soft:#5A6070;
-  --r-card:24px; --r-pill:999px;
-  --head:"Baloo 2","Trebuchet MS",Verdana,sans-serif;
-  --body:"Nunito","Segoe UI",-apple-system,BlinkMacSystemFont,sans-serif;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;background:var(--paper);color:var(--night-ink);
-  font:17px/1.65 var(--body);-webkit-font-smoothing:antialiased;
-}
-h1,h2,h3,h4{font-family:var(--head);line-height:1.15;margin:0 0 .5rem;font-weight:800}
-p{margin:0 0 1rem}
-a{color:#2C6098}
-img{max-width:100%;height:auto;display:block}
-.wrap{max-width:1060px;margin:0 auto;padding:0 1.25rem}
-.narrow{max-width:760px}
-
-/* stitched seam, the app's signature */
-.stitch{position:relative}
-.stitch::after{
-  content:"";position:absolute;inset:7px;border:2px dashed currentColor;
-  border-radius:calc(var(--r-card) - 7px);opacity:.28;pointer-events:none;
-}
-
-/* ---------- header ---------- */
-.top{background:var(--night-ink);color:var(--plush-cream);padding:.85rem 0}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.brand{font-family:var(--head);font-weight:800;font-size:1.15rem;letter-spacing:.2px;display:flex;align-items:center;gap:.5rem}
-.brand a{color:var(--plush-cream);text-decoration:none}
-.brand .zs{color:var(--dream-glow);font-size:.85em;letter-spacing:-2px}
-.top nav{display:flex;gap:1.1rem;flex-wrap:wrap}
-.top nav a{color:var(--dream-glow);text-decoration:none;font-weight:700;font-size:.94rem}
-.top nav a:hover{text-decoration:underline}
-
-/* ---------- hero ---------- */
-.hero{
-  background:radial-gradient(120% 90% at 72% 30%,#4A5060 0%,var(--night-ink) 62%);
-  color:var(--plush-cream);padding:3.2rem 0 0;overflow:hidden;position:relative;
-}
-.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:end}
-.hero-copy{padding-bottom:3.4rem}
-.eyebrow{
-  display:inline-block;font-family:var(--head);font-weight:700;font-size:.8rem;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--night-ink);
-  background:var(--dream-glow);padding:.32rem .85rem;border-radius:var(--r-pill);margin-bottom:1rem;
-}
-.hero h1{font-size:clamp(2.1rem,5.4vw,3.5rem);margin-bottom:.9rem}
-.hero h1 em{font-style:normal;color:var(--dream-glow)}
-.hero p{font-size:1.14rem;color:#D8DDE6;max-width:33rem}
-.cta{display:flex;gap:.8rem;flex-wrap:wrap;margin:1.6rem 0 1.1rem}
-.btn{
-  --r-card:var(--r-pill);
-  display:inline-block;font-family:var(--head);font-weight:800;font-size:1.02rem;
-  padding:.8rem 1.7rem;border-radius:var(--r-pill);text-decoration:none;
-  color:var(--night-ink);background:var(--periwinkle);
-  box-shadow:0 7px 0 rgba(0,0,0,.18);transition:transform .12s,box-shadow .12s;
-}
-.btn:hover{transform:translateY(2px);box-shadow:0 5px 0 rgba(0,0,0,.18)}
-.btn.ghost{background:transparent;color:var(--dream-glow);box-shadow:none;border:2px solid rgba(191,227,238,.45)}
-.hero small{display:block;color:#AEB6C4;font-size:.9rem}
-.hero-art{position:relative}
-.hero-art img{margin:0 auto;filter:drop-shadow(0 26px 30px rgba(0,0,0,.42))}
-.zzz{position:absolute;font-family:var(--head);font-weight:800;color:var(--dream-glow);opacity:.9;user-select:none}
-.z1{top:4%;right:14%;font-size:2.6rem;animation:drift 6s ease-in-out infinite}
-.z2{top:16%;right:5%;font-size:1.8rem;animation:drift 6s ease-in-out .9s infinite}
-.z3{top:27%;right:22%;font-size:1.25rem;animation:drift 6s ease-in-out 1.8s infinite}
-@keyframes drift{0%,100%{transform:translateY(0) rotate(-4deg);opacity:.45}50%{transform:translateY(-14px) rotate(6deg);opacity:.95}}
-@media(prefers-reduced-motion:reduce){.zzz{animation:none;opacity:.8}}
-
-/* wooden floor the hero stands on */
-.floorstrip{
-  height:34px;
-  background:
-    repeating-linear-gradient(90deg,rgba(0,0,0,.09) 0 2px,transparent 2px 118px),
-    linear-gradient(180deg,var(--floor-light),var(--floor-honey));
-}
-
-/* ---------- sections ---------- */
-section{padding:3.4rem 0}
-.sec-head{text-align:center;max-width:44rem;margin:0 auto 2.4rem}
-.sec-head h2{font-size:clamp(1.7rem,3.6vw,2.4rem)}
-.sec-head p{color:var(--ink-soft);font-size:1.06rem;margin:0}
-.kicker{
-  font-family:var(--head);font-weight:700;letter-spacing:.13em;text-transform:uppercase;
-  font-size:.78rem;color:var(--pumpkin);display:block;margin-bottom:.4rem;
-}
-
-/* ---------- how to play ---------- */
-#play{
-  background:
-    repeating-linear-gradient(90deg,rgba(160,170,185,.09) 0 2px,transparent 2px 190px),
-    linear-gradient(180deg,#fbfcfd,#eef0f3);
-}
-.steps{max-width:900px;margin:0 auto}
-.step{
-  display:grid;grid-template-columns:76px 1fr 210px;gap:1.4rem;
-  align-items:center;margin-bottom:.6rem;
-}
-.step:nth-child(even){grid-template-columns:210px 1fr 76px}
-.step:nth-child(even) .num{order:3}
-.step:nth-child(even) .step-body{order:2}
-.step:nth-child(even) .step-art{order:1}
-.num{
-  width:72px;height:72px;border-radius:50%;display:grid;place-items:center;
-  font-family:var(--head);font-weight:800;font-size:2.1rem;color:#fff;
-  background:var(--moss-sage);box-shadow:0 6px 0 rgba(0,0,0,.14);position:relative;
-}
-.num::after{content:"";position:absolute;inset:7px;border:2px dashed rgba(255,255,255,.65);border-radius:50%}
-.step:nth-child(2) .num{background:var(--periwinkle)}
-.step:nth-child(3) .num{background:var(--pumpkin)}
-.step:nth-child(4) .num{background:var(--lavender)}
-.step:nth-child(5) .num{background:var(--floor-honey)}
-.step-body h3{font-size:1.4rem}
-.step-body p{font-size:1.05rem;color:#4A5060;margin:0}
-.step-art img{
-  margin:0 auto;max-height:170px;width:auto;
-  filter:drop-shadow(0 12px 16px rgba(90,60,30,.22));
-}
-
-/* ---------- wake-ups ---------- */
-.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-.rule{
-  background:#fff;border-radius:var(--r-card);padding:1.6rem 1.4rem;color:var(--night-ink);
-  box-shadow:0 10px 24px rgba(90,60,30,.10);border:2px solid rgba(58,63,74,.10);
-}
-.rule:nth-child(1){transform:rotate(-.8deg)}
-.rule:nth-child(3){transform:rotate(.8deg)}
-.rule svg{width:44px;height:44px;margin-bottom:.7rem}
-.rule h3{font-size:1.2rem}
-.rule p{margin:0;color:#4A5060;font-size:1rem}
-.aside-note{
-  margin-top:1.6rem;background:var(--night-ink);color:var(--plush-cream);
-  border-radius:var(--r-card);padding:1.5rem 1.7rem;text-align:center;
-}
-.aside-note strong{color:var(--dream-glow)}
-.aside-note p{margin:0}
-
-/* ---------- beasts ---------- */
-#beasts{background:var(--night-ink);color:var(--plush-cream)}
-#beasts .sec-head p{color:#C2C9D4}
-.roster{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
-.beast{
-  background:rgba(233,237,228,.06);border:2px solid rgba(233,237,228,.14);
-  border-radius:var(--r-card);padding:1rem .8rem 1.1rem;text-align:center;
-}
-.beast img{height:130px;width:auto;margin:0 auto .6rem;object-fit:contain}
-.beast b{font-family:var(--head);font-size:1rem;display:block}
-.beast span{font-size:.86rem;color:#AEB6C4}
-.beast.star{background:rgba(191,227,238,.10);border-color:rgba(191,227,238,.4)}
-
-/* ---------- grown-ups ---------- */
-.panels{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
-.panel{
-  background:#fff;border-radius:var(--r-card);padding:1.7rem;
-  border:2px solid rgba(58,63,74,.10);box-shadow:0 10px 24px rgba(90,60,30,.08);
-}
-.panel.warn{background:#FFF4F3;border-color:rgba(201,79,79,.45)}
-.panel.warn h3{color:#A83A3A}
-.panel h3{font-size:1.25rem}
-.panel ul{margin:0;padding-left:1.2rem}
-.panel li{margin:.4rem 0}
-.panel p:last-child,.panel ul:last-child{margin-bottom:0}
-
-/* ---------- faq ---------- */
-#faq{background:linear-gradient(180deg,#eef0f3,#fbfcfd)}
-details{
-  background:#fff;border-radius:18px;margin-bottom:.7rem;
-  border:2px solid rgba(58,63,74,.10);overflow:hidden;
-}
-details[open]{border-color:rgba(143,168,216,.6)}
-summary{
-  cursor:pointer;list-style:none;padding:1.05rem 3rem 1.05rem 1.3rem;
-  font-family:var(--head);font-weight:700;font-size:1.08rem;position:relative;
-}
-summary::-webkit-details-marker{display:none}
-summary::after{
-  content:"+";position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);
-  font-size:1.6rem;color:var(--periwinkle);line-height:1;
-}
-details[open] summary::after{content:"–"}
-details .a{padding:0 1.3rem 1.2rem;color:#4A5060}
-details .a p:last-child{margin-bottom:0}
-
-/* ---------- support ---------- */
-#support{background:var(--night-ink);color:var(--plush-cream)}
-.helpcard{
-  background:rgba(233,237,228,.07);border:2px solid rgba(191,227,238,.3);
-  border-radius:var(--r-card);padding:2rem;text-align:center;
-}
-.helpcard a.mail{
-  font-family:var(--head);font-weight:800;font-size:1.4rem;
-  color:var(--dream-glow);text-decoration:none;word-break:break-all;
-}
-.helpcard ul{text-align:left;max-width:34rem;margin:1.2rem auto 0;color:#C2C9D4}
-
-/* ---------- footer ---------- */
-footer{background:#2C3038;color:#9AA1AD;padding:2.2rem 0;font-size:.92rem}
-footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-footer a{color:var(--dream-glow)}
-footer p{margin:0}
-
-@media(max-width:860px){
-  .hero .wrap{grid-template-columns:1fr}
-  .hero-copy{padding-bottom:1rem}
-  .hero-art{max-width:420px;margin:0 auto}
-  .step,.step:nth-child(even){
-    grid-template-columns:64px 1fr;gap:1rem;margin-bottom:1.6rem;align-items:start;
-  }
-  .step-art{display:none}
-  .step .num,.step:nth-child(even) .num{order:1}
-  .step .step-body,.step:nth-child(even) .step-body{order:2}
-  .num{width:56px;height:56px;font-size:1.6rem}
-  .num::after{inset:5px}
-  .rules{grid-template-columns:1fr}
-  .rule{transform:none!important}
-  .roster{grid-template-columns:repeat(2,1fr)}
-  .panels{grid-template-columns:1fr}
-}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How to Play, FAQ &amp; Support — Beast Safari: AR Photo Hunt</title>
+<meta name="description" content="How to play Beast Safari: AR Photo Hunt, answers to common questions, fixes for the camera and floor, and how to reach a human.">
+<link rel="canonical" href="https://pingsolveai.com/sleepingbeasts-support.html">
+<meta name="theme-color" content="#6F9CF7">
+<meta name="apple-itunes-app" content="app-id=6795575731">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PingSolve">
+<meta property="og:title" content="Beast Safari: How to Play &amp; FAQ">
+<meta property="og:description" content="Find the sleeping beasts, creep close and snap their photo. Rules, answers and help.">
+<meta property="og:url" content="https://pingsolveai.com/sleepingbeasts-support.html">
+<meta property="og:image" content="https://pingsolveai.com/beast-safari/img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Beast Safari: five plush beasts asleep in a pile">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="beast-safari/img/favicon-32.png">
+<link rel="apple-touch-icon" href="beast-safari/img/apple-touch-icon.png">
+<link rel="preload" href="beast-safari/fonts/anton-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="beast-safari/fonts/baloo2-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/beast-safari.css">
 </head>
-<body>
+<body class="bs">
+<a class="bs-skip" href="#main">Skip to content</a>
 
-<header class="site-header" style="background: var(--night-ink); border-bottom: 1px solid rgba(255,255,255,0.1);">
-  <div class="site-header-inner" style="max-width: 1060px;">
-    <h1 class="site-title"><a href="index.html" style="color: #fff;">My Apps</a></h1>
-    <nav class="main-nav">
-      <a href="sleepingbeasts.html" style="color: var(--dream-glow);">Sleeping Beasts</a>
-      <a href="#play" style="color: #D8DDE6;">How to Play</a>
-      <a href="#grownups" style="color: #D8DDE6;">Safety</a>
-      <a href="#faq" style="color: #D8DDE6;">FAQ</a>
-      <a href="sleepingbeasts-privacy.html" style="color: #D8DDE6;">Privacy Policy</a>
-      <a href="sleepingbeasts-terms.html" style="color: #D8DDE6;">Terms of Service</a>
+<header class="bs-top">
+  <div class="bs-wrap">
+    <a class="bs-brand" href="sleepingbeasts.html">
+      <picture>
+        <source type="image/webp" srcset="beast-safari/img/icon-96.webp 1x, beast-safari/img/icon-192.webp 2x">
+        <img src="beast-safari/img/icon-96.png" width="36" height="36" alt="">
+      </picture>
+      Beast Safari
+    </a>
+    <nav class="bs-nav" aria-label="Beast Safari">
+      <a href="https://apps.apple.com/app/id6795575731" class="bs-nav-wide">App Store</a>
+      <a href="sleepingbeasts-support.html" aria-current="page">Help</a>
     </nav>
   </div>
 </header>
 
-<div class="hero">
-  <div class="wrap">
-    <div class="hero-copy">
-      <span class="eyebrow">iPhone · Augmented Reality</span>
-      <h1>Something is asleep <em>on your floor.</em></h1>
-      <p>Sleeping Beasts turns your actual room into a stealth course. Point your phone at the ground and a snoring plush monster settles onto your real carpet. Now creep past it, take the treasure, and whatever you do — <strong>don't wake it up.</strong></p>
-      <div class="cta">
-        <a class="btn" href="#play">How to play</a>
-        <a class="btn ghost" href="#support">I need help</a>
-      </div>
-      <small>First heist free · One payment unlocks the rest · No ads, no subscriptions</small>
-    </div>
-    <div class="hero-art">
-      <span class="zzz z1">Z</span><span class="zzz z2">z</span><span class="zzz z3">z</span>
-      <img src="sleepingbeasts-img/mossy-grump-hero.png" alt="The Mossy Grump, a round white plush creature with green moss patches and a scrunched grumpy face, fast asleep." width="760" height="610">
-    </div>
-  </div>
-  <div class="floorstrip"></div>
-</div>
+<main id="main">
 
-<section id="play">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker">Five steps</span>
-      <h2>How to play</h2>
-      <p>If you can walk quietly, you already know how. Here's the whole game.</p>
-    </div>
-
-    <div class="steps">
-    <div class="step">
-      <div class="num">1</div>
-      <div class="step-body">
-        <h3>Pick your room</h3>
-        <p>Turn a light on. Push the toys, shoes and cables out of the way so you don't trip. You want a clear patch of floor about the size of a bath towel.</p>
-      </div>
-      <div class="step-art"><img src="sleepingbeasts-img/storm-cloud.png" alt="The Storm Cloud, a grey plush cloud with a crescent moon, dozing." width="300"></div>
-    </div>
-
-    <div class="step">
-      <div class="num">2</div>
-      <div class="step-body">
-        <h3>Show your phone the floor</h3>
-        <p>Point the camera down and move it slowly from side to side — like you're painting the carpet with a torch. After a few seconds the game finds your ground.</p>
-      </div>
-      <div class="step-art"><img src="sleepingbeasts-img/pebble-snorer.png" alt="The Pebble Snorer, a smooth grey stone creature with a sleeping face." width="300"></div>
-    </div>
-
-    <div class="step">
-      <div class="num">3</div>
-      <div class="step-body">
-        <h3>Put a beast to bed</h3>
-        <p>Tap the floor. A big sleepy monster flops down right there — on your actual carpet. Walk around it. Crouch down. It really is in the room with you.</p>
-      </div>
-      <div class="step-art"><img src="sleepingbeasts-img/mossy-grump.png" alt="The Mossy Grump asleep, with little Zzz rising." width="300"></div>
-    </div>
-
-    <div class="step">
-      <div class="num">4</div>
-      <div class="step-body">
-        <h3>Now sneak</h3>
-        <p>Walk slowly. Stay quiet. Hold the phone steady. The beast can hear every squeak and feel every stomp — and it is only pretending to be a cuddly toy.</p>
-      </div>
-      <div class="step-art"><img src="sleepingbeasts-img/slumbering-dragon.png" alt="The Slumbering Dragon, an iridescent periwinkle plush dragon curled up asleep." width="300"></div>
-    </div>
-
-    <div class="step">
-      <div class="num">5</div>
-      <div class="step-body">
-        <h3>Grab the treasure and go</h3>
-        <p>Get close, hold still, and take it. Then get yourself back out again — before it opens one eye and spots you standing there.</p>
-      </div>
-      <div class="step-art"><img src="sleepingbeasts-img/pumpkin-cat.png" alt="The Pumpkin Cat, an orange pumpkin-bodied plush cat holding an autumn leaf." width="300"></div>
-    </div>
-    </div>
-  </div>
-</section>
-
-<section id="rules">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker">Three ways to blow it</span>
-      <h2>What wakes them up</h2>
-      <p>Watch the three meters along the edge of your screen. Keep them all in the blue.</p>
-    </div>
-
-    <div class="rules">
-      <div class="rule">
-        <svg viewBox="0 0 48 48" fill="none" stroke="#D9822B" stroke-width="3" stroke-linecap="round">
-          <path d="M18 19v10M25 13v22M32 17v14M39 21v6M11 22v4"/>
-        </svg>
-        <h3>Noise</h3>
-        <p>Your phone listens to how loud the room is. A quiet giggle is survivable. A dropped shoe is not.</p>
-      </div>
-      <div class="rule">
-        <svg viewBox="0 0 48 48" fill="none" stroke="#8FA8D8" stroke-width="3" stroke-linecap="round">
-          <path d="M6 28c4-10 8-10 12 0s8 10 12 0 8-10 12 0"/>
-        </svg>
-        <h3>Wobble</h3>
-        <p>Stomping around and swinging your phone makes a beast twitch. Smooth and slow keeps it snoring.</p>
-      </div>
-      <div class="rule">
-        <svg viewBox="0 0 48 48" fill="none" stroke="#8FA876" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M24 12 8 36h32L24 12Z"/><circle cx="24" cy="29" r="3.5"/>
-        </svg>
-        <h3>The Snooze Cone</h3>
-        <p>Every beast dreams facing one direction. Stand in front of its nose too long and it starts to stir.</p>
-      </div>
-    </div>
-
-    <div class="aside-note">
-      <p><strong>And if it does wake up?</strong> It sits bolt upright and yells <em>"INTRUDER ALERT!"</em> — and that's the whole scare. No blood, no chasing, no nightmares. It's a stuffed animal with moss growing on its head.</p>
-    </div>
-  </div>
-</section>
-
-<section id="beasts">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker">Fourteen sleepers</span>
-      <h2>Meet the beasts</h2>
-      <p>Four run the campaign heists. The other ten are hiding somewhere in your house, waiting to have their photo taken.</p>
-    </div>
-
-    <div class="roster">
-      <div class="beast star"><img src="sleepingbeasts-img/mossy-grump.png" alt="The Mossy Grump"><b>The Mossy Grump</b><span>Heist 1 · the tutor</span></div>
-      <div class="beast star"><img src="sleepingbeasts-img/slumbering-dragon.png" alt="The Slumbering Dragon"><b>The Slumbering Dragon</b><span>Heist 2 · light sleeper</span></div>
-      <div class="beast star"><img src="sleepingbeasts-img/pumpkin-cat.png" alt="The Pumpkin Cat"><b>The Pumpkin Cat</b><span>Heist 3 · twitchy</span></div>
-      <div class="beast star"><img src="sleepingbeasts-img/ink-octopus.png" alt="The Ink Octopus"><b>The Ink Octopus</b><span>Heist 4 · hair trigger</span></div>
-      <div class="beast"><img src="sleepingbeasts-img/polkadot-puppy.png" alt="The Polkadot Puppy"><b>The Polkadot Puppy</b><span>Safari</span></div>
-      <div class="beast"><img src="sleepingbeasts-img/galaxy-bat.png" alt="The Galaxy Bat"><b>The Galaxy Bat</b><span>Safari</span></div>
-      <div class="beast"><img src="sleepingbeasts-img/zzz-moth.png" alt="The Zzz Moth"><b>The Zzz Moth</b><span>Safari</span></div>
-      <div class="beast"><img src="sleepingbeasts-img/unzicorn.png" alt="The Unzicorn"><b>The Unzicorn</b><span>Safari</span></div>
-      <div class="beast"><img src="sleepingbeasts-img/storm-cloud.png" alt="The Storm Cloud"><b>The Storm Cloud</b><span>Safari</span></div>
-      <div class="beast"><img src="sleepingbeasts-img/paisley-whale.png" alt="The Paisley Whale"><b>The Paisley Whale</b><span>Safari</span></div>
-      <div class="beast"><img src="sleepingbeasts-img/pebble-snorer.png" alt="The Pebble Snorer"><b>The Pebble Snorer</b><span>Safari</span></div>
-      <div class="beast"><img src="sleepingbeasts-img/sleepy-crest.png" alt="The Sleepy Crest"><b>The Sleepy Crest</b><span>Safari</span></div>
-      <div class="beast"><img src="sleepingbeasts-img/slumber-snake.png" alt="The Slumber Snake"><b>The Slumber Snake</b><span>Safari</span></div>
-      <div class="beast"><img src="sleepingbeasts-img/dust-mote-spider.png" alt="The Dust-Mote Spider"><b>The Dust-Mote Spider</b><span>Safari</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="grownups">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker">Before you hand over the phone</span>
-      <h2>For grown-ups</h2>
-      <p>Four things worth two minutes of your time — the first one most of all.</p>
-    </div>
-
-    <div class="panels">
-      <div class="panel warn">
-        <h3>Safety comes first</h3>
-        <p>This game makes people walk backwards through their own living room while staring at a screen. Please:</p>
-        <ul>
-          <li><strong>Clear the floor first</strong> — cables, toys, low tables, pets.</li>
-          <li><strong>Never play near stairs</strong>, balconies, glass doors, water, or a hot stove.</li>
-          <li><strong>Never play outdoors near traffic</strong> or in a car park.</li>
-          <li><strong>Supervise younger players</strong> the whole time, and keep other children and pets out of the play area.</li>
-          <li><strong>Look up often</strong> — the camera view will not warn you about the coffee table.</li>
-        </ul>
-        <p style="margin-top:1rem">Full safety and health guidance is in the <a href="sleepingbeasts-terms.html">Terms of Service</a>.</p>
-      </div>
-
-      <div class="panel">
-        <h3>About that microphone</h3>
-        <p>The beast &ldquo;hears&rdquo; you, so the game does need microphone access. Here is exactly what that means:</p>
-        <ul>
-          <li>It reads <strong>one number — how loud the room is.</strong> That's all.</li>
-          <li>There is <strong>no recording, ever.</strong> No audio file is created, saved, or sent anywhere.</li>
-          <li>It's <strong>only on during a heist</strong>, and switches off the moment you leave.</li>
-          <li>No speech recognition. No listening for words. Nothing leaves the phone.</li>
-        </ul>
-        <p style="margin-top:1rem">The camera works the same way: it draws the room on screen and keeps nothing. Details in the <a href="sleepingbeasts-privacy.html">Privacy Policy</a>.</p>
-      </div>
-
-      <div class="panel">
-        <h3>What it costs</h3>
-        <ul>
-          <li><strong>The first heist is free</strong> — the whole thing, not a demo.</li>
-          <li><strong>One payment</strong> unlocks the rest of the campaign, Beast Safari and Hardcore mode. Forever.</li>
-          <li><strong>No subscriptions. No adverts. No energy timers. No loot boxes.</strong></li>
-          <li><strong>No account, no sign-up, no email address.</strong></li>
+  <section class="bs-hero">
+    <div class="bs-wrap bs-hero-grid">
+      <div>
+        <h1 class="bs-display">How to play</h1>
+        <p class="bs-lede">The rules of every mode, answers to the questions people ask, and a human if you’re stuck.</p>
+        <ul class="bs-jump" aria-label="On this page">
+          <li><a href="#how-to-play">Rules</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#fixes">Fixes</a></li>
+          <li><a href="#grown-ups">Grown-ups</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
+      <div class="bs-hero-art" style="max-width:240px;margin:8px auto 0">
+        <picture>
+          <source type="image/webp" srcset="beast-safari/img/sleeping-360.webp 360w, beast-safari/img/sleeping-640.webp 640w, beast-safari/img/sleeping-737.webp 737w" sizes="240px">
+          <img src="beast-safari/img/sleeping-480.png" width="737" height="676" fetchpriority="high" alt="The Mossy Grump, a grumpy plush beast, fast asleep on a cushion">
+        </picture>
+      </div>
+    </div>
+  </section>
 
-      <div class="panel">
-        <h3>What you'll need</h3>
-        <ul>
-          <li><strong>An iPhone XS or newer</strong> — augmented reality needs the newer hardware.</li>
-          <li><strong>A lit room.</strong> The camera has to see your floor; a dark room won't work.</li>
-          <li><strong>A clear patch of floor</strong> roughly a metre across.</li>
-          <li><strong>Somewhere you're allowed to be quiet.</strong> Which, for once, is the whole point.</li>
+  <!-- The rules. Mirrors the in-app How to Play (app/how-to-play.tsx); the two must not contradict. -->
+  <section class="bs-sec" id="how-to-play" aria-labelledby="h-rules" style="padding-top:12px">
+    <div class="bs-wrap">
+      <h2 class="bs-h2" id="h-rules">The rules</h2>
+      <p class="bs-lede">The same rules are in the app: tap the <strong>?</strong> on Home.</p>
+      <div class="bs-modes">
+
+        <article class="bs-card" id="safari">
+          <div class="bs-mode-head"><span class="bs-glyph" aria-hidden="true">🔦</span><h3>Safari</h3></div>
+          <ol class="bs-steps bs-steps--tight">
+            <li>Point the phone at the floor and sweep it slowly until the room is mapped.</li>
+            <li>You have 3 minutes. Walk slowly and look all around: on the floor, and up in the air too.</li>
+            <li>When you spot a sleeping beast, creep closer, put it in the middle of the frame and hold steady.</li>
+            <li>Tap the shutter when it says “Now!” and hold still for a moment. Every photo scores points.</li>
+            <li>A <strong>?</strong> above a beast means it is stirring, and <strong>!</strong> means it is waking up. Freeze until it settles.</li>
+            <li>Noise and fast moves fill Ranger’s Nerve. If it fills up, every beast runs away and the round ends.</li>
+            <li>A loud noise or a sudden jolt wakes every beast close by, even ones you haven’t found yet. They tiptoe away and still count as spooked.</li>
+            <li>Closed the app and opened it somewhere else? Go back to where you were, or tap <strong>Map from here</strong> and sweep the floor again.</li>
+          </ol>
+        </article>
+
+        <article class="bs-card" id="sticker-book">
+          <div class="bs-mode-head"><span class="bs-glyph bs-glyph--lav" aria-hidden="true">📖</span><h3>Sticker Book</h3></div>
+          <ol class="bs-steps bs-steps--tight">
+            <li>The first photo of each kind of beast becomes a sticker in your Sticker Book, and is worth ×2 points.</li>
+            <li>Rarer beasts are worth more: Common 10 · Uncommon 25 · Rare 60 · Legendary 150 points.</li>
+            <li>Your first photo of the day is worth double. Come back each night to keep your streak going.</li>
+            <li>Each night one free beast is Tonight’s Sleeper (it’s on Home). Its photo is worth double too.</li>
+            <li>The 5 gold slots are Golden Stickers: the rarest sleepers, part of Complete the Sticker Book.</li>
+            <li>Once a day a golden visitor may sneak into a Safari. Snap it for the points; its sticker stays locked until you complete the Sticker Book.</li>
+            <li>After you complete the Sticker Book, some beasts turn up shiny: solid gold, with sparkles all around. A shiny photo is stamped SHINY, is worth double, and puts a ✨ mark on its sticker.</li>
+          </ol>
+        </article>
+
+        <article class="bs-card" id="ranger">
+          <div class="bs-mode-head"><span class="bs-glyph" aria-hidden="true">🎖️</span><h3>Your Ranger</h3></div>
+          <ol class="bs-steps bs-steps--tight">
+            <li>On the Ranger tab you can change your name and pick a buddy beast. Your buddy waits for you on Home.</li>
+            <li>Missions earn 8 Ranger Badges. Tap a medal on the Ranger tab to see what it is for.</li>
+            <li>Every photo you take lands in your Beast Album, on the Ranger tab. Share it or save it to your phone.</li>
+            <li>Complete the Sticker Book adds Golden Buddies, and Decorate in the Album: crowns, hats and props for your photos.</li>
+          </ol>
+        </article>
+
+        <article class="bs-card" id="party-safari">
+          <div class="bs-mode-head"><span class="bs-glyph" aria-hidden="true">🎉</span><h3>Party Safari</h3></div>
+          <p class="bs-paid"><span class="bs-tag">With Complete the Sticker Book</span></p>
+          <ol class="bs-steps bs-steps--tight">
+            <li>2 to 8 players, one phone. Type everyone’s names in turn order.</li>
+            <li>Each player gets 75 seconds of Safari, then passes the phone on.</li>
+            <li>Tap “I’m [name] — go!” only when it is really your turn.</li>
+            <li>Most points at the end wins. Ties share the medal.</li>
+          </ol>
+        </article>
+
+        <article class="bs-card" id="training">
+          <div class="bs-mode-head"><span class="bs-glyph bs-glyph--lime" aria-hidden="true">🧸</span><h3>Ranger Training</h3></div>
+          <p class="bs-paid"><span class="bs-tag bs-tag--free">Free</span></p>
+          <ol class="bs-steps bs-steps--tight">
+            <li>4 heists that teach you to move quietly. All free.</li>
+            <li>Map the floor, then tap the ground to put the sleeping beast down.</li>
+            <li>Creep to the treasure without waking it: keep quiet, move smoothly, and never step on the beast.</li>
+            <li>Get close to the loot and grab it. On later heists the beast wakes up groggy when you do: back away slowly and get clear within 15 seconds.</li>
+            <li>Each heist has three goals: 💎 take the loot, 📸 a close, steady Trophy photo, and 👻 win without it ever getting close to waking.</li>
+            <li>Complete the Sticker Book adds Hardcore mode here: twitchier beasts and tighter clocks.</li>
+          </ol>
+        </article>
+
+        <article class="bs-card" id="party-heist">
+          <div class="bs-mode-head"><span class="bs-glyph bs-glyph--lime" aria-hidden="true">🏴‍☠️</span><h3>Party Heist</h3></div>
+          <p class="bs-paid"><span class="bs-tag">With Complete the Sticker Book</span></p>
+          <ol class="bs-steps bs-steps--tight">
+            <li>Everyone plays the same heist, one turn each, passing the phone.</li>
+            <li>Points: 100 for each piece of loot, 150 for getting away, plus a calm bonus for keeping the beast sleepy.</li>
+            <li>Wake the beast and you keep only the loot you had grabbed. Biggest haul wins.</li>
+          </ol>
+        </article>
+
+        <article class="bs-card">
+          <div class="bs-mode-head"><span class="bs-glyph" aria-hidden="true">★</span><h3>Ranger tips</h3></div>
+          <ul class="bs-list">
+            <li>Play in a bright room with clear floor space. Plain, dark or shiny floors are hard for the camera to see.</li>
+            <li>Move like a ninja: slow steps, steady hands, quiet voices.</li>
+            <li>Look around you, not just ahead. Beasts sleep behind you and up high too.</li>
+            <li>Ask a grown-up to help clear anything you could trip over.</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ. Native details/summary: no script. -->
+  <section class="bs-sec bs-sec--stickers" id="faq" aria-labelledby="h-faq">
+    <div class="bs-wrap bs-narrow">
+      <h2 class="bs-h2" id="h-faq">Questions people ask</h2>
+
+      <div class="bs-faq-group">
+        <h3>On a safari</h3>
+        <div class="bs-faq">
+          <details id="spooked-unseen">
+            <summary>A beast got spooked that I never even saw. Why?</summary>
+            <div class="bs-answer">
+              <p>A loud noise or a sudden jolt wakes every sleeper close by, even ones you haven’t found yet. They tiptoe away before you can see them, but they still count as spooked. Stay quiet and the room stays full.</p>
+            </div>
+          </details>
+          <details id="stir">
+            <summary>What do the ? and ! above a beast mean?</summary>
+            <div class="bs-answer">
+              <p>That beast is stirring. A <strong>?</strong> means it’s starting to wake; a <strong>!</strong> means it’s nearly awake. Freeze, stay quiet, and it settles back down.</p>
+              <p>Rushing up to a beast or talking near it wakes it, and rarer beasts wake faster. Creep in slowly.</p>
+            </div>
+          </details>
+          <details id="nerve">
+            <summary>What is Ranger’s Nerve?</summary>
+            <div class="bs-answer">
+              <p>The meter that fills when you’re noisy or move fast. If it fills right up, every beast runs away and the round ends. Slow down and keep quiet and it stays low.</p>
+            </div>
+          </details>
+          <details id="map-from-here">
+            <summary>I closed the app and now the beasts are gone. What’s “Map from here”?</summary>
+            <div class="bs-answer">
+              <p>The phone remembers the room by what it saw. If you leave the app and come back somewhere else, the game says it lost track of the room. Go back to where you were, or tap <strong>Map from here</strong> and sweep the floor again.</p>
+            </div>
+          </details>
+          <details id="tonights-sleeper">
+            <summary>What is Tonight’s Sleeper?</summary>
+            <div class="bs-answer">
+              <p>Each night one free beast is Tonight’s Sleeper. Home shows which one. Its photo is worth double, and that stacks with First Catch of the Day. It works in Party Safari too.</p>
+            </div>
+          </details>
+          <details id="first-catch">
+            <summary>What is First Catch of the Day?</summary>
+            <div class="bs-answer">
+              <p>Your first photo each day is worth double, and the game counts how many days in a row you’ve caught a beast. Come back tomorrow to keep the streak going.</p>
+            </div>
+          </details>
+          <details id="golden-visitor">
+            <summary>I saw a golden beast, but its sticker is locked. Why?</summary>
+            <div class="bs-answer">
+              <p>That was the golden visitor. Once a day, one of the five Golden Sticker beasts may sneak into a solo Safari. Snap it and you keep the points; its sticker stays locked until you complete the Sticker Book. Your photo is kept, so buying later fills that sticker in.</p>
+            </div>
+          </details>
+          <details id="shiny">
+            <summary>What are shiny beasts?</summary>
+            <div class="bs-answer">
+              <p>After you complete the Sticker Book, about one beast in twenty on a solo Safari turns up shiny: solid gold, with sparkles all around. A shiny photo is stamped SHINY, is worth double and puts a ✨ on that sticker. Shiny photos you save or share leave in a golden frame.</p>
+            </div>
+          </details>
+          <details id="points">
+            <summary>How are photos scored?</summary>
+            <div class="bs-answer">
+              <p>Common 10, Uncommon 25, Rare 60 and Legendary 150 points. A beast you’ve never photographed before is worth ×2, and so are your first catch of the day and Tonight’s Sleeper.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="bs-faq-group">
+        <h3>Your ranger</h3>
+        <div class="bs-faq">
+          <details id="badges">
+            <summary>What are the Ranger Badges?</summary>
+            <div class="bs-answer">
+              <p>Eight medals on the Ranger tab, each for a mission:</p>
+              <ul>
+                <li><strong>First Sticker</strong>: stick your first photo in the Sticker Book.</li>
+                <li><strong>Sky Watcher</strong>: photograph flying beasts.</li>
+                <li><strong>Full House</strong>: collect every free sticker.</li>
+                <li><strong>Whisper Feet</strong>: finish a Safari with a photo and nothing spooked.</li>
+                <li><strong>Big Haul</strong>: score big in one Safari.</li>
+                <li><strong>Seven Nights</strong>: catch a beast seven nights in a row.</li>
+                <li><strong>Party Host</strong>: finish a Party Safari or Party Heist.</li>
+                <li><strong>Graduate</strong>: clear all four Ranger Training heists.</li>
+              </ul>
+              <p>Tap a medal in the app to see exactly what it needs. Complete the Sticker Book also adds a Golden Ranger badge.</p>
+            </div>
+          </details>
+          <details id="buddy">
+            <summary>How do I change my name or buddy beast?</summary>
+            <div class="bs-answer">
+              <p>On the Ranger tab. Your buddy waits for you on Home. Complete the Sticker Book adds the five Golden Buddies.</p>
+            </div>
+          </details>
+          <details id="photos">
+            <summary>Where are my photos?</summary>
+            <div class="bs-answer">
+              <p>In the Beast Album on the Ranger tab. They stay inside the app on your phone until you tap Save (to your photo library) or Share. With Complete the Sticker Book, tap a photo and then <strong>Decorate</strong> to add crowns, hats and props.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="bs-faq-group">
+        <h3>Party Mode</h3>
+        <div class="bs-faq">
+          <details id="party">
+            <summary>How does Party Mode work?</summary>
+            <div class="bs-answer">
+              <p>2 to 8 players share one phone, taking turns and passing it on. There are two games:</p>
+              <ul>
+                <li><strong>Party Safari</strong>: each player gets 75 seconds of Safari. Most points wins; ties share the medal.</li>
+                <li><strong>Party Heist</strong>: everyone plays the same heist, one turn each. Biggest haul wins.</li>
+              </ul>
+              <p>Party Mode comes with Complete the Sticker Book.</p>
+            </div>
+          </details>
+          <details id="heist-scoring">
+            <summary>How is a Party Heist scored?</summary>
+            <div class="bs-answer">
+              <ul>
+                <li><strong>100</strong> for each piece of loot you take. You keep it even if the beast wakes.</li>
+                <li><strong>+150</strong> for getting away.</li>
+                <li><strong>A calm bonus</strong> of up to 100 when you get away: the sleepier the beast stayed, the bigger it is.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="bs-faq-group" id="buying">
+        <h3>Free and paid</h3>
+        <div class="bs-faq">
+          <details id="free">
+            <summary>Is it really free?</summary>
+            <div class="bs-answer">
+              <p>Yes. Every solo Beast Safari and all four Ranger Training heists are free, not a trial. There are no ads, no subscriptions and no energy timers.</p>
+            </div>
+          </details>
+          <details id="complete">
+            <summary>What does Complete the Sticker Book add?</summary>
+            <div class="bs-answer">
+              <p>It’s the one optional purchase, US$1.99 once (Apple shows your own local price before anything is charged). It adds:</p>
+              <ul>
+                <li>the five rare and legendary Golden Stickers</li>
+                <li>shiny beasts: solid gold, sparkling and worth double</li>
+                <li>Party Mode: Party Safari and Party Heist</li>
+                <li>Golden Ranger extras: photo props, Golden Buddies, a golden frame on shiny photos and the Golden Ranger badge</li>
+                <li>Hardcore mode in Ranger Training</li>
+              </ul>
+            </div>
+          </details>
+          <details id="grown-up-check">
+            <summary>What is the grown-up check?</summary>
+            <div class="bs-answer">
+              <p>Before the price button buys anything, the app asks a grown-up to hold the button for two seconds or answer a sum. Restore Purchase needs no check.</p>
+            </div>
+          </details>
+          <details id="restore">
+            <summary>I paid, but it’s locked on my new phone. How do I restore?</summary>
+            <div class="bs-answer">
+              <p>Tap <strong>Restore Purchase</strong>: it’s under Ranger › About &amp; Help, and on the Complete the Sticker Book screen. As long as you’re signed in with the same Apple Account you bought it with, it unlocks straight away and you’re not charged again.</p>
+              <p>If nothing is found, check the Apple Account under Settings is the one you bought with. That’s by far the most common cause.</p>
+            </div>
+          </details>
+          <details id="bought-1-0">
+            <summary>I bought the full game when it was Sleeping Beasts. Do I pay again?</summary>
+            <div class="bs-answer">
+              <p>No. It’s the same app with a new name, and the same purchase. You already have everything Complete the Sticker Book adds. If it shows as locked, tap Restore Purchase.</p>
+            </div>
+          </details>
+          <details id="refunds">
+            <summary>Can I get a refund?</summary>
+            <div class="bs-answer">
+              <p>Refunds for App Store purchases are handled by Apple, not by us; we have no way to issue one. Go to <a href="https://reportaproblem.apple.com/">reportaproblem.apple.com</a>, sign in and choose the purchase. If something is broken, please email us too so we can fix it.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="bs-faq-group">
+        <h3>Privacy and devices</h3>
+        <div class="bs-faq">
+          <details id="mic">
+            <summary>Are you recording my voice or my room?</summary>
+            <div class="bs-answer">
+              <p>No. The microphone measures how loud the room is: a single number, read on your phone and thrown away straight away. No audio is recorded, stored or sent, and there’s no speech recognition of any kind. It’s only on during a Safari round or a heist.</p>
+              <p>The camera draws the room on screen and keeps nothing. The only pictures are the ones you take with the shutter or photo button, and they stay in the app on your phone. See the <a href="sleepingbeasts-privacy.html">Privacy Policy</a>.</p>
+            </div>
+          </details>
+          <details id="iphones">
+            <summary>Which iPhones does it work on?</summary>
+            <div class="bs-answer">
+              <p>iPhone XS and newer. The game uses Apple’s ARKit to find real surfaces, which needs that hardware. You don’t need a Pro model or LiDAR. It’s built for phones, so it isn’t offered on iPad.</p>
+            </div>
+          </details>
+          <details id="internet">
+            <summary>Do I need an internet connection?</summary>
+            <div class="bs-answer">
+              <p>Only to buy or restore. The game itself runs entirely on your phone, so you can play with the Wi-Fi off.</p>
+            </div>
+          </details>
+          <details id="scary">
+            <summary>Is it scary? My child is little.</summary>
+            <div class="bs-answer">
+              <p>No. On a safari, a beast that wakes just slips away. In Ranger Training the worst that happens is a plush toy sitting up and shouting “INTRUDER ALERT!” No gore, no chasing, no monsters coming for you. It’s rated 4+.</p>
+            </div>
+          </details>
+          <details id="new-name">
+            <summary>Wasn’t this called Sleeping Beasts?</summary>
+            <div class="bs-answer">
+              <p>Yes. Version 1.1 renamed Sleeping Beasts: AR Stealth to Beast Safari: AR Photo Hunt, because the photo safari became the heart of the game. The stealth heists are still here, as Ranger Training.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fixes -->
+  <section class="bs-sec" id="fixes" aria-labelledby="h-fixes">
+    <div class="bs-wrap bs-narrow">
+      <h2 class="bs-h2" id="h-fixes">Fixes</h2>
+      <div class="bs-faq">
+        <details id="no-floor">
+          <summary>The game can’t find my floor.</summary>
+          <div class="bs-answer">
+            <p>Nine times out of ten it’s light. Turn on a lamp, then point the camera at a floor with some pattern or texture: a rug, floorboards, a carpet weave. Plain, very dark or shiny floors give the camera nothing to lock onto. Move the phone slowly; sweeping fast makes it worse.</p>
+            <p>Still stuck after a few seconds? On a safari a <strong>Start anyway</strong> button appears: flying beasts come first, and floor beasts join as the floor gets mapped. In Ranger Training a <strong>Put it down here</strong> button drops the beast in front of you without a scan.</p>
+          </div>
+        </details>
+        <details id="no-beasts">
+          <summary>I can’t find any beasts.</summary>
+          <div class="bs-answer">
+            <p>Turn all the way around and look up as well as down: beasts sleep behind you and near the ceiling. Walk to another part of the room, and sweep the floor around you so more sleepers can settle in. If the game says it lost track of the room, go back to where you were or tap <strong>Map from here</strong>.</p>
+          </div>
+        </details>
+        <details id="wakes-instantly">
+          <summary>The beasts wake up the moment I start.</summary>
+          <div class="bs-answer">
+            <p>The room is probably loud. A TV, a dishwasher or a busy kitchen fills the meters before you take a step. Find a quieter room, and move at about half your normal walking speed. The first heist is the most forgiving place to practise.</p>
+          </div>
+        </details>
+        <details id="permissions">
+          <summary>I said no to the camera or microphone.</summary>
+          <div class="bs-answer">
+            <p>Open the iPhone’s Settings, scroll down to <strong>Beast Safari</strong>, and turn on Camera and Microphone. The game can’t show the beasts without the camera, or hear you without the microphone.</p>
+          </div>
+        </details>
+        <details id="small-space">
+          <summary>Do I need a big room? Can I play sitting down?</summary>
+          <div class="bs-answer">
+            <p>Ranger Training needs about a metre of clear floor; a living-room rug is plenty. A safari is happier in a whole room you can walk around. You can play sitting on the floor and leaning, but it’s much more fun on your feet.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- For grown-ups: keep the safety guidance and the microphone explanation intact (referenced by the listing and the privacy policy). -->
+  <section class="bs-sec bs-sec--sky" id="grown-ups" aria-labelledby="h-grown">
+    <div class="bs-wrap">
+      <h2 class="bs-h2" id="h-grown">For grown-ups</h2>
+      <p class="bs-lede">Four things worth two minutes of your time, the first one most of all.</p>
+      <div class="bs-facts">
+        <div class="bs-card">
+          <h3>⚠️ Safety comes first</h3>
+          <p>This game has people walking around their own home while looking at a screen. Please:</p>
+          <ul class="bs-list">
+            <li>Clear the floor first: cables, toys, low tables, pets.</li>
+            <li>Never play near stairs, balconies, glass doors, water or a hot stove.</li>
+            <li>Never play outdoors near traffic or in a car park.</li>
+            <li>Supervise younger players the whole time, and keep other children and pets out of the play area.</li>
+            <li>Look up often: the camera view won’t warn you about the coffee table.</li>
+          </ul>
+          <p class="bs-fine">Full safety and health guidance is in the <a href="sleepingbeasts-terms.html">Terms of Service</a>.</p>
+        </div>
+        <div class="bs-card">
+          <h3>🎙️ About that microphone</h3>
+          <p>The beasts “hear” you, so the game needs microphone access. Here’s exactly what that means:</p>
+          <ul class="bs-list">
+            <li>It reads one number: how loud the room is. That’s all.</li>
+            <li>There is no recording, ever. No audio file is created, saved or sent anywhere.</li>
+            <li>It’s only on during a Safari round or a heist, and switches off the moment you leave.</li>
+            <li>No speech recognition. No listening for words. Nothing leaves the phone.</li>
+          </ul>
+          <p class="bs-fine">The camera works the same way: it draws the room on screen and keeps nothing. Details in the <a href="sleepingbeasts-privacy.html">Privacy Policy</a>.</p>
+        </div>
+        <div class="bs-card">
+          <h3>💛 What it costs</h3>
+          <ul class="bs-list">
+            <li>Solo Safari and all four Ranger Training heists are free. Not a demo.</li>
+            <li>One optional purchase, Complete the Sticker Book (US$1.99; your local price is shown first), adds the Golden Stickers, shiny beasts, Party Mode, the Golden Ranger extras and Hardcore. Forever.</li>
+            <li>A grown-up check comes before any purchase.</li>
+            <li>No subscriptions. No adverts. No energy timers. No loot boxes.</li>
+            <li>No account, no sign-up, no email address, no chat.</li>
+          </ul>
+        </div>
+        <div class="bs-card">
+          <h3>📱 What you’ll need</h3>
+          <ul class="bs-list">
+            <li>An iPhone XS or newer: augmented reality needs the newer hardware.</li>
+            <li>A lit room. The camera has to see your floor; a dark room won’t work.</li>
+            <li>A clear patch of floor, roughly the size of a rug.</li>
+            <li>Somewhere you’re allowed to be quiet. Which, for once, is the whole point.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="bs-sec" id="contact" aria-labelledby="h-contact">
+    <div class="bs-wrap bs-narrow">
+      <div class="bs-card">
+        <h2 class="bs-h2" id="h-contact" style="font-size:clamp(1.9rem,8vw,2.6rem)">Talk to a human</h2>
+        <p>We read every message. It helps to tell us:</p>
+        <ul class="bs-list">
+          <li>Which iPhone you’re using, and which version of iOS.</li>
+          <li>What you were doing when it went wrong: scanning, on a safari, in a heist, buying?</li>
+          <li>What you expected, and what happened instead.</li>
+          <li>A screenshot, if you can get one. It helps more than anything.</li>
         </ul>
+        <div class="bs-actions" style="margin-top:18px">
+          <a class="bs-btn" href="mailto:support@pingsolveai.com?subject=Beast%20Safari%20support">Email support</a>
+        </div>
+        <p class="bs-fine">support@pingsolveai.com · In the app: Ranger › About &amp; Help.</p>
+        <p class="bs-fine" style="margin-top:12px">Enjoying it? A rating on the App Store helps us make more games.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="faq">
-  <div class="wrap narrow">
-    <div class="sec-head">
-      <span class="kicker">Stuck?</span>
-      <h2>Questions people actually ask</h2>
-    </div>
+</main>
 
-    <details open>
-      <summary>The game can't find my floor. What now?</summary>
-      <div class="a">
-        <p>Nine times out of ten it's light. Turn on a lamp, then point the camera at a floor with some pattern or texture to it — a rug, floorboards, a carpet weave. Plain, very dark, or shiny surfaces give the camera nothing to lock onto. Move the phone slowly; sweeping it fast makes it worse.</p>
-        <p>Still nothing after about ten seconds? A <strong>&ldquo;Put it down here&rdquo;</strong> button appears. Tap it and the beast will drop in front of you without needing a scan at all.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Is it scary? My child is little.</summary>
-      <div class="a">
-        <p>No. The worst thing that happens is a plush toy sitting up and shouting &ldquo;INTRUDER ALERT!&rdquo;. There's no gore, no chasing, no monsters coming for you — the humour is the whole point, and getting caught is usually the funniest part of the round. It's rated 4+.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Are you recording my voice or my room?</summary>
-      <div class="a">
-        <p>No, and this is worth being precise about. The microphone is used to measure <strong>how loud your room is</strong> — a single number, read on your phone, thrown away immediately. No audio is recorded, stored, or transmitted, and there's no speech recognition of any kind.</p>
-        <p>The camera is the same: it draws the augmented reality view on your screen and keeps nothing. The only pictures that ever exist are the ones you deliberately take with the photo button, and they're saved to your own phone. See the <a href="sleepingbeasts-privacy.html">Privacy Policy</a>.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>How much does it cost?</summary>
-      <div class="a">
-        <p>The first heist is free and complete. Everything after that is unlocked with a <strong>single one-time payment</strong> — the price in your own currency is shown by Apple before anything is charged. There are no subscriptions, no adverts and no extra charges afterwards.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>I paid, but I got a new phone and everything is locked again.</summary>
-      <div class="a">
-        <p>Open the unlock screen and tap <strong>Restore Purchase</strong>. As long as you're signed in with the same Apple Account you bought it with, it'll unlock again straight away and you won't be charged twice.</p>
-        <p>If it says nothing was found, check that the Apple Account signed in under Settings is the one you used originally — this is by far the most common cause.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Can I get a refund?</summary>
-      <div class="a">
-        <p>Refunds for App Store purchases are handled by Apple, not by us — we have no way to issue one. Go to <strong>reportaproblem.apple.com</strong>, sign in, and choose the purchase. If something is broken, please also email us so we can fix it.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Which iPhones does it work on?</summary>
-      <div class="a">
-        <p>iPhone XS and newer. The game leans on Apple's ARKit to find real surfaces, which needs that hardware. You do <em>not</em> need a Pro model or LiDAR — a standard iPhone is fine. It's built for phones, so it isn't offered on iPad.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Do I need an internet connection?</summary>
-      <div class="a">
-        <p>Only to make or restore a purchase. The game itself runs entirely on your phone, so once it's unlocked you can play with the wi-fi off.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>What is Beast Safari?</summary>
-      <div class="a">
-        <p>The mode that opens up once you've finished the campaign. Instead of one beast on one patch of floor, sleeping creatures are scattered through your whole room in full 360°, and your job is to find and photograph them. Fourteen species fill in a Codex one sighting at a time — and the rare ones do not make it easy.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Do I need a big room?</summary>
-      <div class="a">
-        <p>For the campaign, about a metre of clear floor is plenty — a living room rug does the job. Beast Safari is happier with a whole room you can walk around, since the creatures hide in the space around you.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Can I play sitting down, or in bed?</summary>
-      <div class="a">
-        <p>You can, and it still works — but the game is built around actually creeping toward something, so it's much more fun on your feet. If you'd rather not move around, play seated on the floor and lean instead of walk.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>My child keeps waking the beast and getting upset.</summary>
-      <div class="a">
-        <p>Two things help. First, play somewhere quiet — a room with a TV on makes the noise meter almost impossible. Second, remind them that slow beats clever: the game rewards moving at about half normal walking speed. Heist 1 is deliberately the most forgiving in the game, so it's the right place to practise.</p>
-      </div>
-    </details>
-  </div>
-</section>
-
-<section id="support">
-  <div class="wrap narrow">
-    <div class="sec-head">
-      <span class="kicker">Still stuck</span>
-      <h2>Talk to a human</h2>
-    </div>
-    <div class="helpcard stitch">
-      <p style="margin-bottom:.4rem">We read every message.</p>
-      <a class="mail" href="mailto:support@pingsolveai.com">support@pingsolveai.com</a>
-      <ul>
-        <li>Which iPhone you're using, and which version of iOS.</li>
-        <li>What you were doing when it went wrong — scanning, sneaking, buying?</li>
-        <li>What you expected to happen, and what happened instead.</li>
-        <li>A screenshot, if you can get one. It helps more than anything else.</li>
-      </ul>
-      <p style="margin:1.4rem 0 0;color:#AEB6C4;font-size:.94rem">If you love the game please consider giving us 5 Stars on the app store. It helps us make more great games.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <p>&copy; 2026 PingSolve LLC. All rights reserved.</p>
-    <p>
-      <a href="sleepingbeasts-privacy.html">Privacy Policy</a> ·
-      <a href="sleepingbeasts-terms.html">Terms of Service</a> ·
-      <a href="index.html">PingSolve Apps</a>
-    </p>
+<footer class="bs-foot">
+  <div class="bs-wrap">
+    <ul class="bs-foot-links">
+      <li><a href="sleepingbeasts.html">Beast Safari</a></li>
+      <li><a href="sleepingbeasts-privacy.html">Privacy Policy</a></li>
+      <li><a href="sleepingbeasts-terms.html">Terms of Service</a></li>
+      <li><a href="https://apps.apple.com/app/id6795575731">App Store</a></li>
+      <li><a href="index.html">More apps</a></li>
+    </ul>
+    <p>Beast Safari: AR Photo Hunt was called Sleeping Beasts: AR Stealth before version 1.1.</p>
+    <p>© 2026 PingSolve LLC. Apple, App Store, ARKit and iPhone are trademarks of Apple Inc.</p>
   </div>
 </footer>
-
 </body>
 </html>

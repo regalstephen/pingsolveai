@@ -1,0 +1,371 @@
+/*
+ * Beast Safari: AR Photo Hunt — the four pages at sleepingbeasts*.html.
+ *
+ * The daylight look of the 1.1 app: sky → cloud gradients, white cards, pill
+ * buttons, Anton headlines, Baloo 2 for everything else. Colours are the app's
+ * own theme tokens (src/constants/theme.ts in the app repo). Sunshine gold is
+ * an accent only, never a background.
+ *
+ * Self-contained on purpose: these pages do not load css/main.css, and every
+ * rule here sits under body.bs, so nothing leaks into the other apps' pages.
+ * Images and fonts live in /beast-safari/ (built by the app repo's
+ * scripts/build-website-assets.py).
+ */
+
+@font-face {
+  font-family: "Anton";
+  src: url("../beast-safari/fonts/anton-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Baloo 2";
+  src: url("../beast-safari/fonts/baloo2-500.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Baloo 2";
+  src: url("../beast-safari/fonts/baloo2-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+.bs {
+  --sky: #6F9CF7;
+  --cloud: #F5F8FF;
+  --ink: #15171C;
+  --lime: #CFF26B;
+  --lavender: #9B7BC8;
+  --sun: #FFE45C;
+  --white: #FFFFFF;
+  --ink-soft: rgba(21, 23, 28, 0.8);
+  --hairline: rgba(21, 23, 28, 0.1);
+  --shadow: 0 8px 24px rgba(21, 23, 28, 0.1);
+  --danger: #C94F4F;
+  --r-card: 24px;
+  --r-pill: 999px;
+  --display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --text: "Baloo 2", ui-rounded, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Side gutter: 16px, or the notch on a landscape iPhone, whichever is wider. */
+  --gutter-l: max(16px, env(safe-area-inset-left));
+  --gutter-r: max(16px, env(safe-area-inset-right));
+
+  margin: 0;
+  min-height: 100vh;
+  background: var(--cloud);
+  color: var(--ink);
+  font: 500 17px/1.6 var(--text);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-wrap: break-word;
+  color-scheme: light;
+}
+.bs *, .bs *::before, .bs *::after { box-sizing: border-box; }
+.bs img { max-width: 100%; height: auto; display: block; }
+.bs picture { display: block; }
+.bs a { color: var(--ink); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.bs p { margin: 0 0 1rem; }
+.bs h1, .bs h2, .bs h3, .bs h4 { margin: 0 0 0.6rem; line-height: 1.15; font-weight: 700; }
+.bs h3 { font-size: 1.3rem; }
+.bs strong { font-weight: 700; }
+.bs :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+
+.bs-skip {
+  position: absolute; left: 16px; top: -100px; z-index: 10;
+  background: var(--ink); color: var(--cloud) !important; padding: 10px 16px; border-radius: var(--r-pill);
+}
+.bs-skip:focus { top: calc(8px + env(safe-area-inset-top)); }
+
+.bs-wrap {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: var(--gutter-l);
+  padding-right: var(--gutter-r);
+}
+.bs-narrow { max-width: 760px; }
+
+/* ── Display type ───────────────────────────────────────────────────────── */
+
+.bs-display, .bs-h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  /* Anton's caps sit high; a natural line height keeps them from clipping. */
+  line-height: 1.05;
+}
+.bs-display { font-size: clamp(2.6rem, 12.5vw, 5.4rem); margin: 0 0 0.9rem; }
+.bs-h2 { font-size: clamp(2.1rem, 9.5vw, 3.6rem); margin: 0 0 0.8rem; }
+.bs-lede { font-size: 1.15rem; line-height: 1.5; max-width: 34rem; }
+.bs-soft { color: var(--ink-soft); }
+.bs-eyebrow {
+  display: inline-block;
+  margin: 0 0 0.9rem;
+  padding: 4px 14px;
+  border-radius: var(--r-pill);
+  background: rgba(245, 248, 255, 0.7);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+
+.bs-top { background: var(--sky); padding-top: env(safe-area-inset-top); }
+.bs-top .bs-wrap {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 64px;
+}
+.bs-brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 44px;
+  font-weight: 700; font-size: 1.15rem; text-decoration: none;
+  white-space: nowrap;
+}
+.bs-brand img { width: 36px; height: 36px; border-radius: 9px; box-shadow: 0 2px 6px rgba(21, 23, 28, 0.2); }
+.bs-nav { display: flex; align-items: center; gap: 6px; }
+.bs-nav a {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px;
+  border-radius: var(--r-pill); font-weight: 700; text-decoration: none; white-space: nowrap;
+}
+.bs-nav a[aria-current="page"] { background: var(--ink); color: var(--cloud); }
+.bs-nav .bs-nav-wide { display: none; }
+@media (min-width: 640px) { .bs-nav .bs-nav-wide { display: inline-flex; } }
+
+/* ── Buttons ────────────────────────────────────────────────────────────── */
+
+.bs-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 26px;
+  border-radius: var(--r-pill);
+  border: 3px solid var(--ink);
+  background: var(--ink); color: var(--cloud) !important;
+  font: 700 1.1rem/1.1 var(--text);
+  text-decoration: none; text-align: center;
+}
+.bs-btn:hover { transform: translateY(-1px); }
+.bs-btn--light { background: var(--cloud); color: var(--ink) !important; }
+.bs-btn--gold { background: var(--sun); color: var(--ink) !important; }
+.bs-btn small { display: block; font-size: 0.85rem; font-weight: 500; opacity: 0.85; }
+.bs-btn .bs-btn-stack { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+.bs-btn svg { flex: none; }
+.bs-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 0 0 0.75rem; }
+.bs-fine { font-size: 0.95rem; color: var(--ink-soft); margin: 0; }
+
+/* ── Hero ───────────────────────────────────────────────────────────────── */
+
+.bs-hero {
+  margin-top: -1px;
+  background: linear-gradient(180deg, var(--sky) 0%, var(--cloud) 100%);
+  padding: 12px 0 32px;
+  overflow: hidden;
+}
+.bs-hero-grid { display: grid; gap: 8px; align-items: center; }
+.bs-hero-art { margin: 8px -8px 0; }
+@media (min-width: 860px) {
+  .bs-hero { padding: 40px 0 56px; }
+  .bs-hero-grid { grid-template-columns: 1.05fr 1fr; gap: 32px; }
+  .bs-hero-art { margin: 0; }
+}
+
+/* ── Sections ───────────────────────────────────────────────────────────── */
+
+.bs-sec { padding: 44px 0; }
+.bs-sec--sky { background: linear-gradient(180deg, var(--sky) 0%, var(--cloud) 100%); }
+.bs-sec--stickers { background: linear-gradient(180deg, rgba(155, 123, 200, 0.55) 0%, var(--cloud) 100%); }
+.bs-sec--training { background: linear-gradient(180deg, var(--lime) 0%, var(--cloud) 100%); }
+.bs-sec--offer { background: linear-gradient(180deg, var(--sky) 0%, var(--lavender) 100%); }
+.bs-sec-head { margin-bottom: 20px; }
+
+.bs-split { display: grid; gap: 20px; align-items: center; }
+@media (min-width: 860px) {
+  .bs-sec { padding: 72px 0; }
+  .bs-split { grid-template-columns: 1fr 1fr; gap: 48px; }
+  .bs-split--flip > :first-child { order: 2; }
+}
+
+.bs-card {
+  background: var(--white);
+  border-radius: var(--r-card);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.bs-card > :last-child { margin-bottom: 0; }
+
+.bs-tag {
+  display: inline-block; padding: 3px 12px; border-radius: var(--r-pill);
+  background: var(--sun); border: 2px solid var(--ink);
+  font-weight: 700; font-size: 0.95rem; line-height: 1.4;
+}
+.bs-tag--free { background: var(--lime); }
+
+/* Ticks and numbered steps. */
+.bs-list { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: 10px; }
+.bs-list li { position: relative; padding-left: 34px; }
+.bs-list li::before {
+  content: "✓"; position: absolute; left: 0; top: 2px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--ink); color: var(--cloud);
+  font-size: 0.8rem; line-height: 24px; text-align: center; font-weight: 700;
+}
+.bs-list--gold li::before { content: "★"; background: var(--sun); color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+
+.bs-steps { list-style: none; counter-reset: step; padding: 0; margin: 0; display: grid; gap: 12px; }
+.bs-steps > li { counter-increment: step; position: relative; padding-left: 44px; }
+.bs-steps > li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 0;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--ink); color: var(--cloud);
+  font: 700 1rem/32px var(--text); text-align: center;
+}
+
+/* Three pillars: Sneak · Snap · Collect. */
+.bs-trio { display: grid; gap: 12px; }
+@media (min-width: 720px) { .bs-trio { grid-template-columns: repeat(3, 1fr); } }
+.bs-trio .bs-card { display: flex; gap: 14px; align-items: flex-start; }
+.bs-glyph {
+  flex: none; width: 48px; height: 48px; border-radius: 16px;
+  display: grid; place-items: center; font-size: 1.5rem;
+  background: rgba(111, 156, 247, 0.3);
+}
+.bs-trio h3 { margin: 0 0 4px; font-size: 1.2rem; }
+.bs-trio p { margin: 0; }
+
+/* ── Screenshot strip: scrolls inside itself, never the page ────────────── */
+
+.bs-shots {
+  display: flex; gap: 12px;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  padding: 4px var(--gutter-r) 16px var(--gutter-l);
+  scroll-padding-left: var(--gutter-l);
+  scrollbar-width: thin;
+}
+.bs-shots figure { flex: none; width: 190px; margin: 0; scroll-snap-align: start; }
+.bs-shots img { width: 100%; aspect-ratio: 1320 / 2868; border-radius: 18px; box-shadow: var(--shadow); background: var(--sky); }
+@media (min-width: 860px) {
+  .bs-shots { max-width: 1080px; margin: 0 auto; }
+  .bs-shots figure { width: 220px; }
+}
+
+/* ── Beast roster ───────────────────────────────────────────────────────── */
+
+.bs-roster { list-style: none; padding: 0; margin: 0 0 1.25rem; display: grid; gap: 10px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (min-width: 560px) { .bs-roster { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .bs-roster { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
+.bs-roster li {
+  background: var(--white); border-radius: 20px; padding: 10px 6px 8px;
+  text-align: center; box-shadow: 0 4px 12px rgba(21, 23, 28, 0.08);
+  border: 3px solid transparent;
+}
+.bs-roster li.is-golden { border-color: var(--sun); box-shadow: 0 0 0 2px var(--ink), 0 4px 12px rgba(21, 23, 28, 0.08); }
+.bs-roster img { width: 100%; height: 72px; object-fit: contain; margin: 0 auto 6px; }
+.bs-roster span { display: block; font-weight: 700; font-size: 0.95rem; line-height: 1.2; }
+
+/* ── Free vs. Complete the Sticker Book ─────────────────────────────────── */
+
+.bs-plans { display: grid; gap: 16px; }
+@media (min-width: 860px) { .bs-plans { grid-template-columns: 1fr 1fr; align-items: start; } }
+.bs-plan h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 2rem; line-height: 1.05; margin: 8px 0 12px; }
+.bs-plan--gold { box-shadow: 0 0 0 4px var(--sun), var(--shadow); }
+.bs-price { font: 700 1.3rem/1.2 var(--text); margin: 0 0 12px; }
+.bs-plan-art { margin: -4px 0 8px; }
+
+/* ── Family block / facts ───────────────────────────────────────────────── */
+
+.bs-facts { display: grid; gap: 12px; }
+@media (min-width: 720px) { .bs-facts { grid-template-columns: repeat(2, 1fr); } }
+.bs-facts .bs-card h3 { font-size: 1.2rem; margin-bottom: 6px; }
+
+/* ── Quick links (support page) ─────────────────────────────────────────── */
+
+.bs-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 4px; padding: 0; list-style: none; }
+.bs-jump a {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px;
+  border-radius: var(--r-pill); background: rgba(245, 248, 255, 0.8); border: 2px solid var(--ink);
+  font-weight: 700; text-decoration: none;
+}
+
+/* How-to-play mode cards. */
+.bs-modes { display: grid; gap: 14px; }
+@media (min-width: 860px) { .bs-modes { grid-template-columns: 1fr 1fr; } }
+.bs-mode-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.bs-mode-head h3 { margin: 0; font-size: 1.35rem; }
+.bs-glyph--lime { background: rgba(207, 242, 107, 0.45); }
+.bs-glyph--lav { background: rgba(155, 123, 200, 0.3); }
+.bs-steps--tight { gap: 8px; }
+.bs-steps--tight > li { padding-left: 36px; }
+.bs-steps--tight > li::before { width: 26px; height: 26px; font-size: 0.9rem; line-height: 26px; }
+.bs-paid { font-size: 0.95rem; margin: 0 0 10px; }
+
+/* ── FAQ (native details/summary, no script) ────────────────────────────── */
+
+.bs-faq-group { margin: 0 0 28px; }
+.bs-faq-group > h3 { font-size: 1.4rem; margin: 0 0 10px; }
+.bs-faq { display: grid; gap: 10px; }
+.bs-faq details { background: var(--white); border-radius: 20px; box-shadow: 0 4px 14px rgba(21, 23, 28, 0.07); }
+.bs-faq summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 56px; padding: 12px 18px;
+  font-weight: 700; font-size: 1.08rem; line-height: 1.35;
+}
+.bs-faq summary::-webkit-details-marker { display: none; }
+.bs-faq summary::after {
+  content: "+"; flex: none; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--ink); color: var(--cloud);
+  font: 700 1.2rem/30px var(--text); text-align: center;
+}
+.bs-faq details[open] summary::after { content: "–"; }
+.bs-faq .bs-answer { padding: 0 18px 16px; }
+.bs-faq .bs-answer > :last-child { margin-bottom: 0; }
+.bs-faq .bs-answer ul { padding-left: 1.2rem; margin: 0 0 1rem; }
+.bs-faq .bs-answer li { margin: 0.25rem 0; }
+
+/* ── Legal documents ────────────────────────────────────────────────────── */
+
+.bs-doc { padding: 22px 18px 26px; }
+@media (min-width: 720px) { .bs-doc { padding: 36px 40px 40px; } }
+.bs-doc h1 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(2.2rem, 10vw, 3.4rem); line-height: 1.05; margin: 0 0 0.5rem; }
+.bs-doc h2 { font-size: 1.3rem; margin: 2.2rem 0 0.6rem; padding-top: 1rem; border-top: 2px solid var(--hairline); }
+.bs-doc h3 { font-size: 1.1rem; margin: 1.4rem 0 0.4rem; }
+.bs-doc .meta { color: var(--ink-soft); font-size: 0.98rem; margin: 0 0 1.5rem; }
+.bs-doc ul, .bs-doc ol { padding-left: 1.4rem; }
+.bs-doc li { margin: 0.35rem 0; }
+.bs-doc .caps { text-transform: uppercase; font-weight: 700; }
+.bs-doc .notice, .bs-doc .danger {
+  border: 3px solid var(--danger); border-radius: 18px; padding: 1rem 1.1rem;
+  margin: 1.6rem 0; background: rgba(201, 79, 79, 0.06);
+}
+.bs-doc .notice h2, .bs-doc .danger h2 { border: 0; margin-top: 0; padding-top: 0; }
+.bs-doc .summary {
+  border-left: 5px solid var(--sky); background: rgba(111, 156, 247, 0.12);
+  padding: 0.9rem 1.1rem; border-radius: 0 16px 16px 0; margin: 1.5rem 0;
+}
+/* Wide tables scroll inside themselves on a phone, never the page. */
+.bs-doc table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; display: block; overflow-x: auto; }
+.bs-doc th, .bs-doc td { border: 1px solid rgba(21, 23, 28, 0.15); padding: 0.5rem 0.65rem; text-align: left; vertical-align: top; min-width: 8rem; }
+.bs-doc th { background: rgba(111, 156, 247, 0.14); }
+.bs-doc a { word-break: break-word; }
+.bs-doc .bs-doc-foot { margin-top: 2.5rem; padding-top: 1rem; border-top: 2px solid var(--hairline); color: var(--ink-soft); font-size: 0.95rem; }
+
+.bs-legal-hero { margin-top: -1px; background: linear-gradient(180deg, var(--sky) 0%, var(--cloud) 220px); padding: 8px 0 40px; }
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+
+.bs-foot {
+  background: var(--ink); color: var(--cloud);
+  padding: 32px 0 calc(28px + env(safe-area-inset-bottom));
+}
+.bs-foot a { color: var(--cloud); }
+.bs-foot-links { display: flex; flex-wrap: wrap; gap: 0 22px; list-style: none; margin: 0 0 12px; padding: 0; }
+.bs-foot-links a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
+.bs-foot p { color: rgba(245, 248, 255, 0.82); font-size: 0.95rem; margin: 0 0 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bs-btn:hover { transform: none; }
+  .bs-shots { scroll-behavior: auto; }
+}
