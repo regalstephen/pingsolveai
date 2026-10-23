@@ -3,83 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TonerAI – Professional Formula Assistant</title>
-  <meta name="description" content="TonerAI is a professional formula assistant for skincare toners.">
-  <link rel="stylesheet" href="css/main.css">
+  <title>TonerAI: AI Toner Formulas for Redken Shades EQ Colorists</title>
+  <meta name="description" content="AI toner formulas for Redken Shades EQ colorists. Enter the level, undertone and porosity (or roots, mids and ends) and get two Shades EQ formulas with exact shades, amounts and why they work. iPhone and web.">
+  <link rel="canonical" href="https://pingsolveai.com/tonerai.html">
+  <meta name="apple-itunes-app" content="app-id=6760732459">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F5F3F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141217" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PingSolve">
+  <meta property="og:title" content="TonerAI: Read the canvas. Nail the toner.">
+  <meta property="og:description" content="Two Shades EQ toner formulas for the client in your chair, with exact shades, amounts and the why. iPhone and web.">
+  <meta property="og:url" content="https://pingsolveai.com/tonerai.html">
+  <meta property="og:image" content="https://pingsolveai.com/assets/tonerai-hero.png">
+  <link rel="icon" type="image/png" href="tonerai/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="tonerai/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tonerai.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="site-header-inner">
-      <h1 class="site-title"><a href="index.html">My Apps</a></h1>
-      <nav class="main-nav">
-        <a href="tonerai.html">TonerAI</a>
-        <a href="tonerai-privacy.html">Privacy Policy</a>
-        <a href="tonerai-terms.html">Terms of Service</a>
-        <a href="tonerai-support.html">Support</a>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="tonerai.html" aria-current="page">TonerAI</a>
+      <nav class="nav" aria-label="TonerAI">
+        <a class="hide-sm" href="#features">Features</a>
+        <a class="wide-only" href="#guides">Toner guides</a>
+        <a href="#pricing">Pricing</a>
+        <a href="tonerai-support.html">Help</a>
+        <a class="btn btn--ink" href="https://gettonerai.com/">Open web app</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="tonerai-hero">
-      <h1 class="marketing-headline">Master Your Toner Formula. <span style="color: var(--tonerai-primary);">Precisely.</span></h1>
-      <p class="tonerai-tagline">The AI-powered formula assistant for professional hair colorists. Stop guessing and start formulating with confidence.</p>
-      
-      <!-- New branding image provided by user -->
-      <img src="assets/tonerai-hero.png" alt="TonerAI Professional Formula Assistant" class="tonerai-hero-img">
-      
-      <div class="cta-block" style="border: none; padding-bottom: 0;">
-        <a href="https://gettonerai.com/" target="_blank" rel="noopener noreferrer" style="background: var(--tonerai-dark); padding: 1rem 3rem; font-size: 1.25rem; border-radius: 50px;">Start Your 7-Day Free Trial</a>
+  <main id="main">
+
+    <!-- Hero: the message, both ways in, and a sample formula. -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="kicker">For Redken Shades EQ colorists</p>
+          <h1 class="display">Read the canvas.<br><em>Nail the toner.</em></h1>
+          <p class="lead">Enter the level and undertone you see at the roots, mids and ends. TonerAI gives you a Shades EQ formula, explains why it works, and remembers what you mixed for every client.</p>
+          <div class="actions">
+            <a class="btn btn--ink btn--lg" href="https://apps.apple.com/app/id6760732459">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Download for iPhone
+            </a>
+            <a class="btn btn--line btn--lg" href="https://gettonerai.com/">Use it on the web</a>
+          </div>
+          <p class="note">7-day free trial &middot; works on iPhone and any browser</p>
+        </div>
+
+        <figure class="formula" style="margin:0" aria-label="Sample formula: level 9, brassy to icy">
+          <p class="formula-label">Level 9 &middot; brassy &rarr; icy</p>
+          <div class="lift" aria-hidden="true"><span style="background:var(--sw-violet)"></span><span style="background:var(--sw-natural)"></span></div>
+          <ul class="shades">
+            <li class="shade"><span class="sw" style="background:var(--sw-violet)" aria-hidden="true"></span><span class="n">09V Platinum Ice<span>Violet</span></span><span class="oz">1 oz</span></li>
+            <li class="shade"><span class="sw" style="background:var(--sw-natural)" aria-hidden="true"></span><span class="n">09N Café au Lait<span>Neutral</span></span><span class="oz">1 oz</span></li>
+          </ul>
+          <div class="ps"><span>2 oz Processing Solution</span><span>20 minutes</span></div>
+          <p class="why"><b>Why:</b> violet cancels yellow; 09N anchors the no-background violet so it reads blonde, not lilac.</p>
+        </figure>
       </div>
     </section>
 
-    <section class="touchbattle-marketing">
-      <h2 class="marketing-headline">Your Color Educator in Your Pocket</h2>
-      <p class="marketing-subhead">
-        TonerAI isn't just a calculator. It's a professional brand engine built around <strong>Redken Shades EQ Gloss</strong> chemistry. It understands levels, underlying pigments, and porosity adjustments just like you do — only faster.
-      </p>
-
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h3>Precision Formulation</h3>
-          <p>Input current level, porosity, and tone. Get two ready-to-mix formulas with exact shade names, measurements, and timing in seconds.</p>
+    <!-- Features -->
+    <section class="section section--card" id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Built for the chair, not the classroom</h2>
+          <p class="body">Two formulas every time, with exact shades, amounts and processing time, using real Shades EQ Gloss and Bonder Inside shades. When Shades EQ can't do it (it's deposit-only), TonerAI tells you and what to do instead.</p>
         </div>
-        <div class="feature-card">
-          <h3>Explore Formula AI Chat</h3>
-          <p>Want to know <em>why</em> the AI chose a specific shade? Tap "Explore" to chat with the AI and learn the chemistry behind the recommendation.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Saved & History</h3>
-          <p>Never lose a great mix again. Save formulas with client notes and photos, and access your full generation history across web and iPhone.</p>
-        </div>
+        <ul class="features">
+          <li>
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>
+            <h3>Zone-by-zone formulas</h3>
+            <p>Roots, mids and ends lift differently. Get a formula for each, with the application order.</p>
+          </li>
+          <li>
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></span>
+            <h3>See the why</h3>
+            <p>Every formula explains the underlying pigment, the neutralizing tone and the background color it relies on.</p>
+          </li>
+          <li>
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></span>
+            <h3>Fix my toner</h3>
+            <p>Too ashy, green, too brown or too dark: triage, today's fix and how to prevent it.</p>
+          </li>
+          <li>
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h4M6 16c.6-1.4 1.7-2 3-2s2.4.6 3 2"/></svg></span>
+            <h3>Client toner cards</h3>
+            <p>Log what you actually mixed, before and after photos, and how it turned out.</p>
+          </li>
+          <li>
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></span>
+            <h3>Processing timers</h3>
+            <p>Run several clients at once, with alerts on iPhone and the web.</p>
+          </li>
+          <li>
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"/></svg></span>
+            <h3>Gloss-refresh reminders</h3>
+            <p>Know when each client is due for a gloss refresh, with a reminder sent to you.</p>
+          </li>
+        </ul>
       </div>
-
-      <h3 class="marketing-subtitle">Who Uses TonerAI?</h3>
-      <ul class="marketing-list">
-        <li><strong>Experienced Colorists</strong>: Validate complex formulas and explore new shade combinations.</li>
-        <li><strong>New Stylists</strong>: Build confidence in color chemistry and ensure consistent results for every client.</li>
-        <li><strong>Beauty Students</strong>: Learn the "why" behind toning with an interactive AI educator.</li>
-      </ul>
-
-      <div class="cta-block">
-        <p class="marketing-cta" style="margin-bottom: 1.5rem;">Join thousands of stylists building better formulas faster.</p>
-        <a href="https://gettonerai.com/" target="_blank" rel="noopener noreferrer" style="background: var(--tonerai-primary);">Visit gettonerai.com to Sign Up</a>
-        <p class="marketing-byline" style="margin-top: 2rem;">By PingSolve LLC</p>
-      </div>
-
-      <p class="marketing-byline" style="margin-top: 2rem; font-size: 0.8rem; font-style: italic; text-align: center; opacity: 0.7;">
-        TonerAI is not affiliated with, endorsed by, or sponsored by Revlon Professional or Redken. Redken® and Shades EQ® are registered trademarks of Revlon Professional.
-      </p>
     </section>
+
+    <!-- Free guides -->
+    <section class="section" id="guides">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Free for every colorist</p>
+          <h2 class="h2">Free Shades EQ toner guides</h2>
+          <p class="body">Practical toning guides for Redken Shades EQ: underlying pigment, which tone neutralizes it, and example starting formulas to strand test.</p>
+        </div>
+        <ul class="guides">
+          <li><a class="gcard" href="https://gettonerai.com/guides/tone-level-9-yellow-to-icy-blonde"><small>Toning</small><strong>Toning level 9 yellow to icy</strong><span>Violet over yellow to cool a level 9, with two example formulas.</span></a></li>
+          <li><a class="gcard" href="https://gettonerai.com/guides/tone-level-7-orange-to-neutral"><small>Toning</small><strong>Toning level 7 orange to neutral</strong><span>Blue-based tones over orange, without going ashy.</span></a></li>
+          <li><a class="gcard" href="https://gettonerai.com/guides/toner-went-purple-fix"><small>Fix it</small><strong>Why toner went purple, and the fix</strong><span>More violet than warmth, porous ends: triage and prevention.</span></a></li>
+          <li><a class="gcard" href="https://gettonerai.com/guides/shades-eq-gloss-vs-bonder-inside"><small>Products</small><strong>Gloss vs. Bonder Inside: which to use</strong><span>Which shades come in each, level by level (US list).</span></a></li>
+          <li><a class="gcard" href="https://gettonerai.com/guides/shades-eq-tone-families"><small>Basics</small><strong>Shades EQ tone families explained</strong><span>What V, P, T, N, NB, GI and the rest neutralize.</span></a></li>
+          <li><a class="gcard" href="https://gettonerai.com/guides/underlying-pigment-by-level"><small>Basics</small><strong>Underlying pigment by level</strong><span>Level 1 to 10, what you'll see and what cancels it.</span></a></li>
+        </ul>
+        <p class="more"><a href="https://gettonerai.com/guides/">All toner guides &rarr;</a></p>
+      </div>
+    </section>
+
+    <!-- Pricing band -->
+    <section class="band" id="pricing">
+      <div class="wrap band-grid">
+        <div>
+          <h2 class="h2">One plan, every client</h2>
+          <p class="lead">Monthly and yearly plans start with a 7-day free trial. One account works on iPhone and on the web.</p>
+          <div class="actions">
+            <a class="btn btn--light btn--lg" href="https://gettonerai.com/">Start free trial</a>
+            <a class="btn btn--ghost btn--lg" href="https://apps.apple.com/app/id6760732459">Download for iPhone</a>
+          </div>
+        </div>
+        <dl class="plans">
+          <div><dt>Monthly<small>7-day free trial</small></dt><dd>$5.99 <small>/ month</small></dd></div>
+          <div><dt>Yearly<small>About $4.00/month, save 33%</small></dt><dd>$47.99 <small>/ year</small></dd></div>
+          <div><dt>Lifetime<small>One payment</small></dt><dd>$179</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- A few questions; the rest are on the help page. -->
+    <section class="section">
+      <div class="wrap split">
+        <div>
+          <h2 class="h2">Frequently asked questions</h2>
+          <p class="body" style="margin-top:14px">More answers on the <a href="tonerai-support.html">help page</a>, or email <a href="mailto:support@pingsolveai.com">support@pingsolveai.com</a>.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Which hair color brand does TonerAI support?</summary>
+            <p>TonerAI is currently optimized for Redken Shades EQ Gloss, the industry-leading acidic demi-permanent professional hair color system. We've built a deep rule set around Redken's official chemistry, shade library, and toning guidelines so every formula follows best practices.</p>
+          </details>
+          <details>
+            <summary>Is TonerAI for beginners or experienced stylists?</summary>
+            <p>Both. Newer stylists use it to learn color chemistry and build confidence with toning formulas. Experienced colorists use it to save time, validate formulas, and explore shade combinations they might not have considered.</p>
+          </details>
+          <details>
+            <summary>Does TonerAI replace my expertise?</summary>
+            <p>Not at all. TonerAI is a professional assistant, not a replacement for your skills. It suggests formulas based on the information you provide, but you remain in complete control of the final result.</p>
+          </details>
+          <details>
+            <summary>Is there a mobile app for TonerAI?</summary>
+            <p>Yes. TonerAI is available on iOS in addition to the web version at gettonerai.com. Your account syncs across both platforms.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer-inner">
-      <a href="tonerai-privacy.html">Privacy Policy</a>
-      <a href="tonerai-terms.html">Terms of Service</a>
-      <a href="tonerai-support.html">Support Policy</a>
+  <footer class="foot">
+    <div class="wrap">
+      <ul class="foot-links">
+        <li><a href="tonerai-support.html">Help &amp; FAQ</a></li>
+        <li><a href="tonerai-privacy.html">Privacy</a></li>
+        <li><a href="tonerai-terms.html">Terms</a></li>
+        <li><a href="mailto:support@pingsolveai.com">support@pingsolveai.com</a></li>
+        <li><a href="index.html">More apps</a></li>
+      </ul>
+      <p>&copy; 2026 PingSolve LLC. Redken and Shades EQ are trademarks of L&rsquo;Or&eacute;al. TonerAI is an independent tool and is not affiliated with Redken. Always strand test.</p>
     </div>
   </footer>
 </body>
 </html>
-
