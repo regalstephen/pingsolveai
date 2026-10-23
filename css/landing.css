@@ -128,6 +128,19 @@ body.landing .site-footer {
   letter-spacing: 0.06em;
 }
 
+/* The copyright line opens a prefilled email to support. */
+body.landing .footer-contact {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+body.landing .footer-contact:hover,
+body.landing .footer-contact:focus-visible {
+  color: var(--crystal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ── Spinning icons (built by js/landing.js) ───────────── */
 
 body.landing .app-card-icon.is-spinnable {
