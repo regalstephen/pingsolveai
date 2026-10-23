@@ -1,0 +1,5 @@
+# pingsolveai.com — everything here is public.
+User-agent: *
+Allow: /
+
+Sitemap: https://pingsolveai.com/sitemap.xml
