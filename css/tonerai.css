@@ -211,6 +211,13 @@ h1, h2, h3 { margin: 0; color: var(--ink); text-wrap: balance; }
 .foot-links a:hover { color: var(--plum); }
 .foot p { margin: 0 0 6px; }
 
+/* ── Back to all apps ───────────────────────────────────── */
+/* A slim bar above the header on every TonerAI page, linking to pingsolveai.com. */
+.ps-back { background: var(--card); border-bottom: 1px solid var(--line); font: 600 13px/1 var(--sans); }
+.ps-back .wrap { display: flex; align-items: center; min-height: 36px; }
+.ps-back a { color: var(--muted); text-decoration: none; }
+.ps-back a:hover { color: var(--plum); }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; }

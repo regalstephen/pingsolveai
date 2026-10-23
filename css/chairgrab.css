@@ -213,6 +213,13 @@ h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 700; color: va
 .foot-base .brand { font-size: 16px; color: var(--muted); font-family: var(--sans); font-weight: 400; }
 .foot-base .brand img { width: 28px; height: 28px; }
 
+/* ── Back to all apps ───────────────────────────────────── */
+/* A slim bar above the header on every ChairGrab page, linking to pingsolveai.com. */
+.ps-back { background: var(--soft); border-bottom: 1px solid var(--line); font: 600 13px/1 var(--sans); }
+.ps-back .wrap { display: flex; align-items: center; min-height: 36px; }
+.ps-back a { color: var(--muted); text-decoration: none; }
+.ps-back a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; }

@@ -941,6 +941,13 @@ h1, h2, h3, h4 {
 .motion .fan.is-dealt .dealer { transition: transform 0.6s var(--ease-deal), opacity 0.4s 0.7s; }
 .motion .fan.is-settled .dealer { transition: transform 0.6s var(--ease-deal), opacity 0.4s; }
 
+/* ── Back to all apps ───────────────────────────────────── */
+/* A slim bar above the header on every Mix Poker page, linking to pingsolveai.com. */
+.ps-back { background: var(--paper-2); border-bottom: 1px solid var(--rule); font: 600 0.84rem/1 var(--sans); }
+.ps-back .wrap { display: flex; align-items: center; min-height: 36px; }
+.ps-back a { color: var(--graphite); text-decoration: none; }
+.ps-back a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }

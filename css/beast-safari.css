@@ -365,6 +365,15 @@
 .bs-foot-links a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
 .bs-foot p { color: rgba(245, 248, 255, 0.82); font-size: 0.95rem; margin: 0 0 6px; }
 
+/* ── Back to all apps ───────────────────────────────────── */
+/* A slim bar above the header on every Beast Safari page, linking to pingsolveai.com.
+   It takes over the notch inset from .bs-top so the two don't stack. */
+.bs .ps-back { background: var(--sky); border-bottom: 1px solid rgba(255, 255, 255, 0.35); padding-top: env(safe-area-inset-top); font-weight: 700; font-size: 0.9rem; line-height: 1; }
+.bs .ps-back + .bs-top { padding-top: 0; }
+.bs .ps-back .bs-wrap { display: flex; align-items: center; min-height: 36px; }
+.bs .ps-back a { color: var(--ink-soft); text-decoration: none; }
+.bs .ps-back a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
 @media (prefers-reduced-motion: reduce) {
   .bs-btn:hover { transform: none; }
   .bs-shots { scroll-behavior: auto; }
