@@ -3,107 +3,235 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChairGrab – Find Salon Chair Rentals & Beauty Suite Spaces</title>
-  <meta name="description" content="Discover salon chair rentals, beauty suites, salon spaces, and job opportunities across major US cities. Join thousands of beauty professionals and salon owners nationwide.">
-  <link rel="stylesheet" href="css/main.css">
-  <style>
-    :root {
-      --chairgrab-primary: #8aa8ab;
-      --chairgrab-accent: #c78045;
-      --chairgrab-dark: #432212;
-      --chairgrab-light: #f5f7f7;
-    }
-    .chairgrab-hero {
-      text-align: center;
-      padding: var(--space-2xl) 0;
-      background: linear-gradient(135deg, var(--chairgrab-light) 0%, #fff 100%);
-      border-radius: var(--radius);
-      margin-bottom: var(--space-2xl);
-    }
-    .chairgrab-hero h1 {
-      color: var(--chairgrab-dark);
-      font-size: 3rem;
-    }
-    .chairgrab-accent-text {
-      color: var(--chairgrab-accent);
-    }
-    .chairgrab-marketing h2, .chairgrab-marketing h3 {
-      color: var(--chairgrab-dark);
-    }
-    .chairgrab-cta-button {
-      background: var(--chairgrab-accent) !important;
-    }
-    .chairgrab-cta-button:hover {
-      background: var(--chairgrab-dark) !important;
-    }
-  </style>
+  <title>ChairGrab - Find Salon Chair Rentals &amp; Beauty Suite Spaces</title>
+  <meta name="description" content="Discover salon chair rentals, beauty suites, salon spaces, and job opportunities across major US cities. Connect beauty professionals with salon owners.">
+  <link rel="canonical" href="https://pingsolveai.com/chairgrab.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PingSolve">
+  <meta property="og:title" content="ChairGrab: Find your chair. Grow your book.">
+  <meta property="og:description" content="Rent a chair, booth or suite, or find your next salon job, in 98 US cities.">
+  <meta property="og:url" content="https://pingsolveai.com/chairgrab.html">
+  <meta property="og:image" content="https://pingsolveai.com/assets/Chairgrab%20Logo.png">
+  <meta name="theme-color" content="#8FB1B5">
+  <link rel="icon" type="image/png" href="chairgrab/img/favicon-96.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/chairgrab.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="site-header-inner">
-      <h1 class="site-title"><a href="index.html">My Apps</a></h1>
-      <nav class="main-nav">
-        <a href="chairgrab.html">ChairGrab</a>
-        <a href="chairgrab-privacy.html">Privacy Policy</a>
-        <a href="chairgrab-terms.html">Terms of Service</a>
-        <a href="chairgrab-support.html">Support</a>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="chairgrab.html" aria-current="page">
+        <img src="chairgrab/img/logo.svg" alt="" width="36" height="36">
+        ChairGrab
+      </a>
+      <nav class="nav" aria-label="ChairGrab">
+        <a class="wide-only" href="https://chairgrab.com/cities">Browse cities</a>
+        <a class="wide-only" href="#how">How it works</a>
+        <a href="chairgrab-support.html">Help</a>
+        <a class="btn btn--ink btn--sm" href="https://chairgrab.com/create-listing">List a space</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="chairgrab-hero">
-      <h1>Chair<span class="chairgrab-accent-text">Grab</span></h1>
-      <p class="tagline">Your absolute shortcut to salon chair rentals and beauty industry jobs.</p>
-      <div class="touchbattle-hero-image">
-        <img src="assets/Chairgrab Logo.png" alt="ChairGrab Logo">
+  <main id="main">
+
+    <!-- Hero: the sage band from chairgrab.com -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Chairs &middot; suites &middot; booths &middot; salon jobs</p>
+          <h1 class="display">Find your chair. Grow your book.</h1>
+          <p class="lead">Rent a chair, booth or suite, or find your next salon job, in 98 US cities.</p>
+          <a class="chairry" href="https://chairgrab.com/">
+            <span class="bubble" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></span>
+            Or just ask Chairry, our AI helper
+          </a>
+        </div>
+        <div class="finder">
+          <a class="finder-row" href="https://chairgrab.com/cities">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <div><small>Where</small><span>Browse 98 cities</span></div>
+          </a>
+          <a class="finder-row" href="https://chairgrab.com/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <div><small>What</small><span>Chair, suite, booth or job</span></div>
+          </a>
+          <a class="btn btn--blue" href="https://chairgrab.com/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            Search on ChairGrab.com
+          </a>
+        </div>
       </div>
     </section>
 
-    <section class="chairgrab-marketing">
-      <h2 class="marketing-headline">Connecting space owners with beauty professionals — fast.</h2>
-      <p class="marketing-subhead">ChairGrab is the premier marketplace for salon chair rentals, beauty suites, and industry career opportunities. Whether you have an empty station or are looking for your next professional home, we've got you covered.</p>
-
-      <h3 class="marketing-subtitle">For Beauty Professionals</h3>
-      <p class="marketing-body">Stylist, barber, nail tech, or makeup artist — find the perfect space to serve your clients without the heavy commitment.</p>
-      <ul class="marketing-list">
-        <li><strong>Flexible Rentals:</strong> Choose between commission-based or flat rental rates.</li>
-        <li><strong>Local Focus:</strong> Explore salon spaces mapped out in your favorite neighborhoods.</li>
-        <li><strong>Career Growth:</strong> Not just for rentals — discover your next teammate or job opportunity in the beauty world.</li>
-        <li><strong>No Commitment:</strong> Find clean, professional spaces to work for a day, a week, or longer.</li>
-      </ul>
-
-      <h3 class="marketing-subtitle">For Salon Owners</h3>
-      <p class="marketing-body">Turn unused space into extra income. List your empty chairs or suites and connect with talented pros looking for a spot.</p>
-      <ul class="marketing-list">
-        <li><strong>Easy AI-Powered Setup:</strong> Just chat about your space, and our AI build your listing for you. Fast and effortless.</li>
-        <li><strong>Total Control:</strong> Set your own availability — even down to daily level pricing.</li>
-        <li><strong>Find Staff:</strong> Need a front desk assistant or beauty pro? ChairGrab helps fill your staff needs too.</li>
-        <li><strong>Marketplace Reach:</strong> Join thousands of owners nationwide listing their spaces on the #1 beauty marketplace.</li>
-      </ul>
-
-      <h3 class="marketing-subtitle">Why ChairGrab?</h3>
-      <p class="marketing-body">Built by beauty professionals, for beauty professionals. We keep things simple, clear, and professional.</p>
-      <ul class="marketing-list">
-        <li><strong>No Subscription Required:</strong> Post your space hassle-free.</li>
-        <li><strong>Mapping Integration:</strong> Visual search makes it easy to find exactly where you want to work.</li>
-        <li><strong>Instant Communication:</strong> Professionals can message owners directly to book or ask questions.</li>
-      </ul>
-
-      <p class="marketing-cta">Ready to find your perfect salon space?</p>
-      <p class="marketing-byline">By PingSolve LLC</p>
+    <!-- Popular cities -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Popular cities</h2>
+          <a href="https://chairgrab.com/cities">All 98</a>
+        </div>
+        <ul class="cities">
+          <li><a class="city t-sage" href="https://chairgrab.com/cities/new-york"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><b>New York</b><small>NY</small></a></li>
+          <li><a class="city t-peach" href="https://chairgrab.com/cities/los-angeles"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><b>Los Angeles</b><small>CA</small></a></li>
+          <li><a class="city t-blue" href="https://chairgrab.com/cities/chicago"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><b>Chicago</b><small>IL</small></a></li>
+          <li><a class="city t-sage" href="https://chairgrab.com/cities/houston"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><b>Houston</b><small>TX</small></a></li>
+          <li><a class="city t-peach" href="https://chairgrab.com/cities/phoenix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><b>Phoenix</b><small>AZ</small></a></li>
+          <li><a class="city t-blue" href="https://chairgrab.com/cities/san-diego"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><b>San Diego</b><small>CA</small></a></li>
+        </ul>
+      </div>
     </section>
 
-    <section class="cta-block">
-      <a href="https://chairgrab.com/" target="_blank" rel="noopener noreferrer" class="chairgrab-cta-button">Visit ChairGrab.com</a>
+    <!-- How it works -->
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">How ChairGrab works</h2>
+          <a href="https://chairgrab.com/how-it-works">Learn more</a>
+        </div>
+        <ol class="steps steps--row">
+          <li><span class="no">1</span><div><h3>Search or ask Chairry</h3><p>Type a city, or tell Chairry what you need in plain words.</p></div></li>
+          <li><span class="no">2</span><div><h3>Contact the salon directly</h3><p>Every listing shows the owner's contact details. Browsing is always free.</p></div></li>
+          <li><span class="no">3</span><div><h3>List your own space</h3><p>Chairry drafts the listing for you. One-time $5 fee, live for at least 30 days.</p></div></li>
+        </ol>
+      </div>
     </section>
+
+    <!-- Two audiences -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><h2 class="h2">From seat to staff</h2></div>
+        <p class="body section-lead">Rent salon chairs and suites directly from local salon owners. Choose commission or rental, with options for front desk or beauty assistant support.</p>
+        <div class="duo">
+          <div class="card t-peach">
+            <h3>For beauty pros</h3>
+            <p>Stylist, barber, nail tech, or makeup artist, but not ready to open your own place? ChairGrab helps you find clean, professional space to serve your clients without the big commitment.</p>
+            <p>Looking for your next opportunity in the beauty industry? You'll find jobs here, too.</p>
+            <a class="btn btn--ink" href="https://chairgrab.com/">Find a chair</a>
+          </div>
+          <div class="card t-sage">
+            <h3>For salon owners</h3>
+            <p>Empty chairs or stations collecting dust? List your chairs, set your availability, even by the day, and connect with beauty pros looking for the perfect spot to work.</p>
+            <p>Need an extra hand at the front desk or on the salon floor? ChairGrab can help you find your next assistant, too.</p>
+            <a class="btn btn--ink" href="https://chairgrab.com/create-listing">List your space</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Listing your space -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><h2 class="h2">Listing your space</h2></div>
+        <ol class="steps steps--row">
+          <li><span class="no">1</span><div><h3>Meet Chairry</h3><p>Just chat about your space in your own words, or skip the chat and do it yourself.</p></div></li>
+          <li><span class="no">2</span><div><h3>AI builds your listing</h3><p>A polished listing with title, photos, amenities, pricing and contact info. Edit and preview before publishing.</p></div></li>
+          <li><span class="no">3</span><div><h3>Pay &amp; publish</h3><p>A one-time $5 listing fee on secure Stripe checkout, and your listing goes live right away. Beauty pros can message you directly.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <ul class="why">
+          <li><b>No forms. Just a convo.</b><span>Our AI does the hard part: you just chat.</span></li>
+          <li><b>No account or subscription</b><span>Post your space for a one-time $5 fee. Searching and contacting listers is always free.</span></li>
+          <li><b>Made for the beauty world</b><span>Built by a beauty pro, so it actually makes sense for what you do.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="empty">
+          <div>
+            <h2>Have an empty chair?</h2>
+            <p>Describe it in a sentence and Chairry writes the listing. One-time $5 fee, live for at least 30 days.</p>
+          </div>
+          <a class="btn btn--white" href="https://chairgrab.com/create-listing">List your space</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- A few questions; the rest are on the help page. -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Frequently asked questions</h2>
+          <a href="chairgrab-support.html">All questions</a>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>How much does it cost to post a listing on ChairGrab?</summary>
+            <p>Posting costs a one-time $5 fee per listing. There is no subscription and no monthly charge. Browsing, searching, and contacting listers is always free.</p>
+          </details>
+          <details>
+            <summary>Is it free to find a chair or a salon job?</summary>
+            <p>Yes. Searching listings, browsing city pages, using our AI assistant, and contacting salon owners are all free. Each listing shows the owner&rsquo;s contact details.</p>
+          </details>
+          <details>
+            <summary>Do I need an account to post?</summary>
+            <p>No. You can post without an account, but signing up first lets you edit, hide, or delete your listing later from your profile.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <a class="promo" href="https://gettonerai.com/">
+          <img src="tonerai/img/apple-touch-icon.png" alt="" width="48" height="48">
+          <span><small>Also by PingSolve &middot; TonerAI</small><b>Not generic AI. Built on brand science.</b>Pro stylist toner formulas from the Redken Shades EQ brand engine.</span>
+          <span class="btn btn--ink btn--sm">See why</span>
+        </a>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer-inner">
-      <a href="chairgrab-privacy.html">Privacy Policy</a>
-      <a href="chairgrab-terms.html">Terms of Service</a>
-      <a href="chairgrab-support.html">Support</a>
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <h2>Explore cities</h2>
+          <ul>
+            <li><a href="https://chairgrab.com/cities">All cities</a></li>
+            <li><a href="https://chairgrab.com/cities/los-angeles">Los Angeles</a></li>
+            <li><a href="https://chairgrab.com/cities/new-york">New York</a></li>
+            <li><a href="https://chairgrab.com/cities/chicago">Chicago</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For salon owners</h2>
+          <ul>
+            <li><a href="https://chairgrab.com/create-listing">List your space</a></li>
+            <li><a href="https://chairgrab.com/how-it-works">How it works</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Help &amp; legal</h2>
+          <ul>
+            <li><a href="chairgrab-support.html">Help &amp; contact</a></li>
+            <li><a href="chairgrab-terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="chairgrab-privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>PingSolve</h2>
+          <ul>
+            <li><a href="index.html">More apps</a></li>
+            <li><a href="https://www.instagram.com/chairgrab/">Follow @chairgrab</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span class="brand"><img src="chairgrab/img/logo.svg" alt="" width="28" height="28">&copy; 2026 ChairGrab, a PingSolve LLC product. All rights reserved.</span>
+        <span>Salon chair rentals, suites, booths and beauty jobs across the US.</span>
+      </div>
     </div>
   </footer>
 </body>
