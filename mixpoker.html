@@ -3,86 +3,387 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mix Poker</title>
-  <link rel="stylesheet" href="css/main.css">
+  <title>Mix Poker: Climb the Ladder. Win the Bracelets.</title>
+  <meta name="description" content="Real hands of all six THORSE games against smart engines with their own styles. Climb a 14-opponent ladder, then win ten bracelets on the MTT Circuit. Practice chips are always free.">
+  <link rel="canonical" href="https://pingsolveai.com/mixpoker.html">
+  <meta name="apple-itunes-app" content="app-id=6763639650">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#d5e0eb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1622" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PingSolve">
+  <meta property="og:title" content="Mix Poker: Climb the Ladder. Win the Bracelets.">
+  <meta property="og:description" content="Real hands of all six THORSE games against smart engines. A 14-opponent ladder, ten MTT Circuit bracelets, free practice chips.">
+  <meta property="og:url" content="https://pingsolveai.com/mixpoker.html">
+  <meta property="og:image" content="https://pingsolveai.com/assets/mixpokericon.png">
+  <link rel="icon" type="image/png" href="mix-poker/img/logo-128.png">
+  <link rel="apple-touch-icon" href="mix-poker/img/logo-128.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mix-poker.css">
+  <script src="mix-poker/mix-poker.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header">
-    <div class="site-header-inner">
-      <h1 class="site-title"><a href="index.html">My Apps</a></h1>
-      <nav class="main-nav">
-        <a href="mixpoker.html">Mix Poker</a>
-        <a href="mixpoker-privacy.html">Privacy Policy</a>
-        <a href="mixpoker-terms.html">Terms of Service</a>
+    <div class="wrap">
+      <a class="brand" href="mixpoker.html" aria-current="page">
+        <img src="mix-poker/img/logo-128.png" alt="" width="34" height="34">
+        Mix Poker
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="nav" id="site-nav" aria-label="Mix Poker">
+        <a href="#practice">Practice Tables</a>
+        <a href="#circuit">MTT Circuit</a>
+        <a href="#academy">Academy</a>
         <a href="mixpoker-support.html">Support</a>
+        <a class="btn btn--ink btn--sm" href="https://apps.apple.com/us/app/mixed-poker-coaching/id6763639650">Get the app</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="touchbattle-hero">
-      <h1>Mix Poker</h1>
-      <p class="tagline">Unlock Your Mixed Poker Game</p>
-      <div class="touchbattle-hero-image">
-        <img src="assets/mixpokericon.png" alt="Mix Poker Icon" style="max-width: 256px; border-radius: 24px;">
+  <main id="main">
+
+    <!-- Hero: the rotation -->
+    <section class="hero">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Mix Poker &middot; iPhone, iPad &amp; web</p>
+          <h1 class="display">Climb the Ladder. <em>Win the Bracelets.</em></h1>
+          <p class="lead">
+            Real hands of all six <strong>THORSE</strong> games against smart engines with their own styles. Beat 14 opponents on the Practice Tables ladder, then take on the MTT Circuit: ten multi-table tournaments, ten bracelets, one World Championship.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn--accent" href="https://apps.apple.com/us/app/mixed-poker-coaching/id6763639650">Get it on the App Store</a>
+            <a class="link-arrow" href="https://learnmixpoker.com/">Play in your browser <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <ul class="glance" aria-label="The ladder bands and the Circuit">
+            <li style="--tint:#34c759">Beginner<small>Free</small></li>
+            <li style="--tint:#32ade6">Intermediate<small>Pro</small></li>
+            <li style="--tint:#af52de">Advanced<small>Pro</small></li>
+            <li style="--tint:#ff9500">Master<small>Pro</small></li>
+            <li style="--tint:#c9a227">10 bracelets<small>yours for keeps</small></li>
+          </ul>
+        </div>
+
+        <div class="rotation" data-rotation>
+          <div class="fan">
+            <a class="fan-card" style="--i:0; --suit:#17171b" href="https://learnmixpoker.com/how-to-play-2-7-triple-draw.html" data-game="2-7 Triple Draw" data-what="Three draws to the worst hand. 7-5-4-3-2 is the nuts.">
+              <span class="letter" aria-hidden="true">T</span><span class="pip" aria-hidden="true">&spades;</span><span class="visually-hidden">2-7 Triple Draw</span>
+            </a>
+            <a class="fan-card" style="--i:1; --suit:#d7263d" href="https://learnmixpoker.com/how-to-play-texas-holdem.html" data-game="Limit Hold'em" data-what="Two hole cards, five on the board, fixed-limit bets.">
+              <span class="letter" aria-hidden="true">H</span><span class="pip" aria-hidden="true">&hearts;</span><span class="visually-hidden">Limit Hold'em</span>
+            </a>
+            <a class="fan-card" style="--i:2; --suit:#2563eb" href="https://learnmixpoker.com/how-to-play-omaha.html" data-game="Omaha 8 or Better" data-what="Four hole cards, use exactly two. High and low split the pot.">
+              <span class="letter" aria-hidden="true">O</span><span class="pip" aria-hidden="true">&diams;</span><span class="visually-hidden">Omaha 8 or Better</span>
+            </a>
+            <a class="fan-card" style="--i:3; --suit:#15803d" href="https://learnmixpoker.com/how-to-play-razz.html" data-game="Razz" data-what="Seven Card Stud for the lowest hand. A-2-3-4-5 wins.">
+              <span class="letter" aria-hidden="true">R</span><span class="pip" aria-hidden="true">&clubs;</span><span class="visually-hidden">Razz</span>
+            </a>
+            <a class="fan-card" style="--i:4; --suit:#17171b" href="https://learnmixpoker.com/how-to-play-seven-card-stud.html" data-game="Seven Card Stud" data-what="Three cards down, four up. Best five-card high hand wins.">
+              <span class="letter" aria-hidden="true">S</span><span class="pip" aria-hidden="true">&spades;</span><span class="visually-hidden">Seven Card Stud</span>
+            </a>
+            <a class="fan-card" style="--i:5; --suit:#d7263d" href="https://learnmixpoker.com/how-to-play-stud-hi-lo.html" data-game="Stud 8 or Better" data-what="Stud with the pot split between high and an 8-or-better low.">
+              <span class="letter" aria-hidden="true">E</span><span class="pip" aria-hidden="true">&hearts;</span><span class="visually-hidden">Stud 8 or Better</span>
+            </a>
+            <span class="dealer" aria-hidden="true"><span>D</span></span>
+          </div>
+          <p class="rotation-caption" aria-hidden="true">
+            <span class="now">Now dealing &middot; <span class="swap count">Game 1 of 6</span></span>
+            <span class="game swap">2-7 Triple Draw</span>
+            <span class="what swap">Three draws to the worst hand. 7-5-4-3-2 is the nuts.</span>
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="touchbattle-marketing">
-      <h2 class="marketing-headline">Master the tables with the ultimate suite of analytical tools, structured learning, and AI-driven insights designed for the modern elite mix game poker player.</h2>
-      
-      <h3 class="marketing-subtitle">The THORSE Suite</h3>
-      <p class="marketing-body">The definitive toolkit for mixed game mastery. Powerful calculators, contextual AI tutoring, and deep-dive analytics designed for serious players who want to dominate the tables.</p>
-
-      <h3 class="marketing-subtitle">THORSE Calculators</h3>
-      <p class="marketing-body">Stop guessing. Get instant, mathematically precise equity calculations for Triple Draw, Hold'em, Omaha Hi-Lo, Razz, Stud, and Stud Eight or Better.</p>
-
-      <h3 class="marketing-subtitle">Academy Tutor</h3>
-      <p class="marketing-body">Your personal mixed game coach. Ask complex strategy questions, analyze tough spots, and get elite-level insights powered by advanced AI trained on optimal poker theory.</p>
-
-      <h3 class="marketing-subtitle">7 Levels of Mastery</h3>
-      <p class="marketing-body">Progress from Bronze to Legend. Test your skills in high-pressure scenarios, earn bracelets, and prove you have what it takes to beat the best in every variant.</p>
-      
-      <h3 class="marketing-subtitle">The THORSE Mix</h3>
-      <ul class="marketing-list">
-        <li><strong>T</strong> - 2-7 Triple Draw</li>
-        <li><strong>H</strong> - Texas Hold'em</li>
-        <li><strong>O</strong> - Omaha Hi-Lo 8 or Better</li>
-        <li><strong>R</strong> - Razz</li>
-        <li><strong>S</strong> - Seven Card Stud</li>
-        <li><strong>E</strong> - Seven Card Stud 8 or Better</li>
-      </ul>
-
-      <p class="marketing-cta"><a href="https://learnmixpoker.com/" target="_blank" rel="noopener noreferrer">Download Mix Poker today.</a></p>
-      <p class="marketing-byline">By PingSolve LLC</p>
+    <!-- 01 The THORSE mix -->
+    <section class="section" id="thorse">
+      <div class="wrap split">
+        <div data-reveal>
+          <p class="sec-index">01</p>
+          <h2 class="h2">Six Games, One Rotation</h2>
+          <p class="prose" style="margin-top: 22px">THORSE is six of the most popular poker variants played in a single rotation. Instead of specializing in one game, you adapt every orbit, across draw games, flop games and stud. Play one game to drill it, or a HORSE, TORSE or full THORSE rotation.</p>
+        </div>
+        <dl class="acronym" data-reveal style="--d:1">
+          <div style="--suit:var(--spade)"><dt>T</dt><dd class="name">2-7 Triple Draw<br><span>Three draws, tap the cards you throw away, stand pat when it is right.</span></dd><dd class="kind"><a href="https://learnmixpoker.com/how-to-play-2-7-triple-draw.html">Rules</a></dd></div>
+          <div style="--suit:var(--heart)"><dt>H</dt><dd class="name">Limit Hold'em<br><span>Small bet, big bet, a bet and three raises, the way it is dealt live.</span></dd><dd class="kind"><a href="https://learnmixpoker.com/how-to-play-texas-holdem.html">Rules</a></dd></div>
+          <div style="--suit:var(--diamond)"><dt>O</dt><dd class="name">Omaha Eight-or-Better<br><span>Split pots and quartered lows, settled exactly.</span></dd><dd class="kind"><a href="https://learnmixpoker.com/how-to-play-omaha.html">Rules</a></dd></div>
+          <div style="--suit:var(--club)"><dt>R</dt><dd class="name">Razz<br><span>Bring-ins, open pairs and the low on board acts first.</span></dd><dd class="kind"><a href="https://learnmixpoker.com/how-to-play-razz.html">Rules</a></dd></div>
+          <div style="--suit:var(--spade)"><dt>S</dt><dd class="name">Seven Card Stud<br><span>Upcards, downcards and the double bet on a fourth-street pair.</span></dd><dd class="kind"><a href="https://learnmixpoker.com/how-to-play-seven-card-stud.html">Rules</a></dd></div>
+          <div style="--suit:var(--heart)"><dt>E</dt><dd class="name">Stud Eight-or-Better<br><span>High, low and the scoop, with every side pot built correctly.</span></dd><dd class="kind"><a href="https://learnmixpoker.com/how-to-play-stud-hi-lo.html">Rules</a></dd></div>
+        </dl>
+      </div>
     </section>
 
-    <h2 class="section-title">Features in Action</h2>
-    <div class="screenshots-grid">
-      <figure class="screenshot-item">
-        <img src="assets/Poker Mix App Screen1.png" alt="Mix Poker Screen 1">
-        <figcaption>THORSE Suite</figcaption>
-      </figure>
-      <figure class="screenshot-item">
-        <img src="assets/Poker Mix App Screen3.png" alt="Mix Poker Screen 3">
-        <figcaption>Calculators & Strategy</figcaption>
-      </figure>
-      <figure class="screenshot-item">
-        <img src="assets/Poker Mix App Screen4.png" alt="Mix Poker Screen 4">
-        <figcaption>Academy Tutor</figcaption>
-      </figure>
-    </div>
-
-    <section class="cta-block">
-      <a href="https://learnmixpoker.com/" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+    <!-- 02 Practice Tables and the ladder -->
+    <section class="section band-night" id="practice">
+      <div class="wrap">
+        <div class="split section-head">
+          <div data-reveal>
+            <p class="sec-index">02</p>
+            <h2 class="h2">Practice Tables &amp; the Ladder</h2>
+          </div>
+          <div data-reveal style="--d:1">
+            <p class="prose" style="margin:0">Fourteen opponents, four bands, every one with its own style. Beat one in a rated heads-up match and the next unlocks, from Beginner to Master. Heads-up or 6-max, all six games, and every decision graded after the match. The Beginner ladder is free.</p>
+            <ul class="checks">
+              <li>A rating for every game plus a mixed rating, Elo style</li>
+              <li>Stakes rise with the band: 5/10 at Beginner up to 50/100 at Master</li>
+              <li>Rated or casual matches of 30, 60 or 90 hands</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ladder" data-reveal>
+          <div class="band">
+            <div class="band-head"><h3>Beginner</h3><span class="pill pill--free">Free</span></div>
+            <div class="rung" style="--r:0"><span class="no">1</span><img src="mix-poker/img/bots/dottie.png" alt="" width="40" height="40" loading="lazy"><span><b>Dottie <span>&middot; 250</span></b><small>Calls everything, bets almost nothing</small></span></div>
+            <div class="rung" style="--r:1"><span class="no">2</span><img src="mix-poker/img/bots/pip.png" alt="" width="40" height="40" loading="lazy"><span><b>Pip <span>&middot; 400</span></b><small>Folds to pressure, waits for monsters</small></span></div>
+            <div class="rung" style="--r:2"><span class="no">3</span><img src="mix-poker/img/bots/gus.png" alt="" width="40" height="40" loading="lazy"><span><b>Gus <span>&middot; 550</span></b><small>Sees every flop, bets when he hits</small></span></div>
+          </div>
+          <div class="band">
+            <div class="band-head"><h3>Intermediate</h3><span class="pill pill--pro">Pro</span></div>
+            <div class="rung" style="--r:3"><span class="no">4</span><img src="mix-poker/img/bots/hank.png" alt="" width="40" height="40" loading="lazy"><span><b>Hank <span>&middot; 700</span></b><small>Tight, honest, a little too polite</small></span></div>
+            <div class="rung" style="--r:4"><span class="no">5</span><img src="mix-poker/img/bots/rosa.png" alt="" width="40" height="40" loading="lazy"><span><b>Rosa <span>&middot; 850</span></b><small>Raises first, thinks later</small></span></div>
+            <div class="rung" style="--r:5"><span class="no">6</span><img src="mix-poker/img/bots/marco.png" alt="" width="40" height="40" loading="lazy"><span><b>Marco <span>&middot; 1,000</span></b><small>Loose and fearless, sometimes reckless</small></span></div>
+          </div>
+          <div class="band">
+            <div class="band-head"><h3>Advanced</h3><span class="pill pill--pro">Pro</span></div>
+            <div class="rung" style="--r:6"><span class="no">7</span><img src="mix-poker/img/bots/ines.png" alt="" width="40" height="40" loading="lazy"><span><b>Ines <span>&middot; 1,100</span></b><small>Textbook tight-aggressive</small></span></div>
+            <div class="rung" style="--r:7"><span class="no">8</span><img src="mix-poker/img/bots/theo.png" alt="" width="40" height="40" loading="lazy"><span><b>Theo <span>&middot; 1,200</span></b><small>Sticky, patient, hard to bluff</small></span></div>
+            <div class="rung" style="--r:8"><span class="no">9</span><img src="mix-poker/img/bots/yara.png" alt="" width="40" height="40" loading="lazy"><span><b>Yara <span>&middot; 1,300</span></b><small>Stud specialist, reads the board</small></span></div>
+            <div class="rung" style="--r:9"><span class="no">10</span><img src="mix-poker/img/bots/bram.png" alt="" width="40" height="40" loading="lazy"><span><b>Bram <span>&middot; 1,400</span></b><small>Relentless pressure, few leaks</small></span></div>
+          </div>
+          <div class="band">
+            <div class="band-head"><h3>Master</h3><span class="pill pill--pro">Pro</span></div>
+            <div class="rung" style="--r:10"><span class="no">11</span><img src="mix-poker/img/bots/celeste.png" alt="" width="40" height="40" loading="lazy"><span><b>Celeste <span>&middot; 1,500</span></b><small>Balanced and hard to read</small></span></div>
+            <div class="rung" style="--r:11"><span class="no">12</span><img src="mix-poker/img/bots/viktor.png" alt="" width="40" height="40" loading="lazy"><span><b>Viktor <span>&middot; 1,600</span></b><small>Precise, cold, punishes mistakes</small></span></div>
+            <div class="rung" style="--r:12"><span class="no">13</span><img src="mix-poker/img/bots/noor.png" alt="" width="40" height="40" loading="lazy"><span><b>Noor <span>&middot; 1,700</span></b><small>Aggressive and fearless in every game</small></span></div>
+            <div class="rung" style="--r:13"><span class="no">14</span><img src="mix-poker/img/bots/ezra.png" alt="" width="40" height="40" loading="lazy"><span><b>Ezra <span>&middot; 1,800</span></b><small>The professor. Makes no easy mistakes.</small></span></div>
+          </div>
+        </div>
+        <p class="fine-note"><a class="link-arrow" href="https://learnmixpoker.com/practice-mixed-poker.html">How the Ladder Works <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+      </div>
     </section>
+
+    <!-- 03 Graded decisions -->
+    <section class="section">
+      <div class="wrap media-split">
+        <div data-reveal>
+          <p class="sec-index">03</p>
+          <h2 class="h2">Every Decision, Graded</h2>
+          <div class="prose" style="margin-top: 22px">
+            <p>When the match ends you get an accuracy score and a card for every decision you made: your equity at that moment, the price you were offered, what you chose and what the math preferred. Good, inaccuracy, mistake or blunder, measured in big bets, like a chess game review.</p>
+            <p style="margin:0">Stuck on why a call was wrong? Tap <strong>Ask the Coach</strong> and the Academy Tutor opens with that exact spot loaded.</p>
+          </div>
+        </div>
+        <div class="panel report" data-reveal style="--d:1">
+          <div class="report-top"><span class="report-score">91%<small>accuracy</small></span><span style="color:var(--graphite);font-size:0.92rem">38 decisions</span></div>
+          <div class="meter" role="img" aria-label="91% accuracy"><div class="meter-fill" style="--v:91"></div></div>
+          <div class="grades">
+            <span class="grade grade--good">31 good</span>
+            <span class="grade grade--inacc">5 inaccuracies</span>
+            <span class="grade grade--mistake">2 mistakes</span>
+            <span class="grade grade--blunder">0 blunders</span>
+          </div>
+          <div class="report-row">
+            <div class="line"><span>Hand 14 &middot; Razz &middot; 5th street</span><span class="grade--mistake">Mistake</span></div>
+            <div class="why">Call 40 instead of fold &middot; &minus;0.6 BB</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 The MTT Circuit -->
+    <section class="section band-night" id="circuit">
+      <div class="wrap media-split media-split--flip">
+        <div data-reveal>
+          <p class="sec-index">04</p>
+          <h2 class="h2">The MTT Circuit</h2>
+          <div class="prose" style="margin-top: 22px">
+            <p>Ten multi-table tournaments, ten bracelets. Start in a 12-player opener and work up to the 120-player World Mix Game Championship. Limits rise, tables break, the field thins, the top 15% cash, and the last player standing takes the bracelet.</p>
+            <p style="margin:0">Win an event to unlock the next. Bust out? Re-enter from level 1. Leave any time: your seat waits.</p>
+          </div>
+          <div class="stats">
+            <div class="stat"><b>10</b><small>events</small></div>
+            <div class="stat"><b>120</b><small>players in the final</small></div>
+            <div class="stat"><b>10</b><small>bracelets</small></div>
+          </div>
+          <p class="fine-note"><a class="link-arrow" href="https://learnmixpoker.com/mixed-poker-tournaments.html">Inside the MTT Circuit <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+        </div>
+        <figure class="trophy" data-reveal style="--d:1">
+          <img src="mix-poker/img/bracelets/level-10-large.png" alt="The World Mix Game Championship bracelet" width="520" height="520" loading="lazy">
+          <figcaption><b>World Mix Game Championship</b>Event 10 &middot; 120 players &middot; 60,000 pool</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 05 The Academy -->
+    <section class="section" id="academy">
+      <div class="wrap">
+        <div class="media-split">
+          <div data-reveal>
+            <p class="sec-index">05</p>
+            <h2 class="h2">Never Play Alone</h2>
+            <p class="prose" style="margin-top: 22px">The Academy Tutor explains any spot street by street, reviews your matches, and keeps you sharp between sessions. Pair it with the THORSE calculators for instant equity on any hand in any of the six games.</p>
+          </div>
+          <div class="panel chat" data-reveal style="--d:1">
+            <div class="chat-head"><span class="badge" aria-hidden="true">A</span>Academy Tutor</div>
+            <div class="bubble bubble--tutor">"In this specific spot on 4th street in Razz, even though you drew a bad card, your hand is still a 3-card 7-low. You should call."</div>
+            <div class="bubble bubble--me">Got it, so I take another card when the betting limit is still a small bet even though I may be behind?</div>
+          </div>
+        </div>
+        <ul class="rules" data-reveal>
+          <li><span class="rule-no">i.</span><h3>Street-by-Street Insights</h3><p>Your hand, the board, the villains, the street: the Tutor breaks down the line.</p></li>
+          <li><span class="rule-no">ii.</span><h3>Ask the Coach</h3><p>Every match graded like a chess game review. Tap a mistake and the Tutor opens on that exact spot.</p></li>
+          <li><span class="rule-no">iii.</span><h3>THORSE Calculators</h3><p>Equity for draw, flop and stud games, plus quick quizzes under Learn for reps away from the table. Free with a Mix Poker account.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 06 Free and Pro -->
+    <section class="section" id="pro">
+      <div class="wrap">
+        <div class="split section-head">
+          <div data-reveal>
+            <p class="sec-index">06</p>
+            <h2 class="h2">Unlock Full Potential</h2>
+          </div>
+          <p class="prose" data-reveal style="--d:1; margin:0">Create a free account for the tools, a 20,000-chip practice stack and the Beginner ladder. Go Pro for every table up to Master and all ten MTT events. Practice chips have no cash value and cannot be bought: this is training, not gambling.</p>
+        </div>
+        <div class="plans" data-reveal>
+          <div class="plan">
+            <div class="plan-head"><h3>Free</h3><span class="pill pill--free">Always</span></div>
+            <p class="price">$0</p>
+            <p class="price-alt">With a free Mix Poker account</p>
+            <ul class="checks">
+              <li>The Beginner ladder: Dottie, Pip and Gus</li>
+              <li>THORSE equity calculators</li>
+              <li>20,000 practice chips to start, 1,000 a day</li>
+              <li>One free seat a day if you bust</li>
+            </ul>
+          </div>
+          <div class="plan plan--pro">
+            <div class="plan-head"><h3>Mix Poker Pro</h3><span class="pill pill--pro">Subscription</span></div>
+            <p class="price">$9.99 <small>/ month</small></p>
+            <p class="price-alt">or $79.99 a year</p>
+            <ul class="checks">
+              <li>Intermediate, Advanced and Master bands</li>
+              <li>6-max tables</li>
+              <li>All ten MTT Circuit events</li>
+              <li>The Academy Tutor</li>
+              <li>5,000 practice chips a day, refills every four hours</li>
+            </ul>
+          </div>
+        </div>
+        <p class="fine-note">Need more Tutor time? Academy Tutor credit packs start at $4.99. <a class="link-arrow" href="mixpoker-support.html#pricing">All prices <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+      </div>
+    </section>
+
+    <!-- 07 Learn the games -->
+    <section class="section" id="learn">
+      <div class="wrap">
+        <div class="split section-head">
+          <div data-reveal>
+            <p class="sec-index">07</p>
+            <h2 class="h2">Learn the Games</h2>
+          </div>
+          <p class="prose" data-reveal style="--d:1; margin:0">Rules, hand rankings, street-by-street play and strategy for every game in the rotation, free on learnmixpoker.com. <a href="https://learnmixpoker.com/how-to-play-mix-poker.html">Start with the THORSE guide.</a></p>
+        </div>
+        <div class="game-tiles" data-reveal>
+          <a class="game-tile" style="--suit:var(--spade)" href="https://learnmixpoker.com/how-to-play-2-7-triple-draw.html">
+            <span class="corner" aria-hidden="true">T<span>&spades;</span></span>
+            <h3>2-7 Triple Draw</h3>
+            <span class="link-arrow">Read the rules <span class="arrow" aria-hidden="true">&rarr;</span></span>
+            <span class="corner corner--flip" aria-hidden="true">T<span>&spades;</span></span>
+          </a>
+          <a class="game-tile" style="--suit:var(--heart)" href="https://learnmixpoker.com/how-to-play-texas-holdem.html">
+            <span class="corner" aria-hidden="true">H<span>&hearts;</span></span>
+            <h3>Limit Texas Hold'em</h3>
+            <span class="link-arrow">Read the rules <span class="arrow" aria-hidden="true">&rarr;</span></span>
+            <span class="corner corner--flip" aria-hidden="true">H<span>&hearts;</span></span>
+          </a>
+          <a class="game-tile" style="--suit:var(--diamond)" href="https://learnmixpoker.com/how-to-play-omaha.html">
+            <span class="corner" aria-hidden="true">O<span>&diams;</span></span>
+            <h3>Omaha 8 or Better</h3>
+            <span class="link-arrow">Read the rules <span class="arrow" aria-hidden="true">&rarr;</span></span>
+            <span class="corner corner--flip" aria-hidden="true">O<span>&diams;</span></span>
+          </a>
+          <a class="game-tile" style="--suit:var(--club)" href="https://learnmixpoker.com/how-to-play-razz.html">
+            <span class="corner" aria-hidden="true">R<span>&clubs;</span></span>
+            <h3>Razz</h3>
+            <span class="link-arrow">Read the rules <span class="arrow" aria-hidden="true">&rarr;</span></span>
+            <span class="corner corner--flip" aria-hidden="true">R<span>&clubs;</span></span>
+          </a>
+          <a class="game-tile" style="--suit:var(--spade)" href="https://learnmixpoker.com/how-to-play-seven-card-stud.html">
+            <span class="corner" aria-hidden="true">S<span>&spades;</span></span>
+            <h3>Seven Card Stud</h3>
+            <span class="link-arrow">Read the rules <span class="arrow" aria-hidden="true">&rarr;</span></span>
+            <span class="corner corner--flip" aria-hidden="true">S<span>&spades;</span></span>
+          </a>
+          <a class="game-tile" style="--suit:var(--heart)" href="https://learnmixpoker.com/how-to-play-stud-hi-lo.html">
+            <span class="corner" aria-hidden="true">E<span>&hearts;</span></span>
+            <h3>Stud 8 or Better</h3>
+            <span class="link-arrow">Read the rules <span class="arrow" aria-hidden="true">&rarr;</span></span>
+            <span class="corner corner--flip" aria-hidden="true">E<span>&hearts;</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing call to action -->
+    <section class="section band-night">
+      <div class="wrap cta" data-reveal>
+        <div>
+          <h2 class="h2">Take Your Seat</h2>
+          <p>Create a free Mix Poker account, play the Beginner ladder for free, and go Pro for Intermediate, Advanced, Master and all ten MTT Circuit events.</p>
+        </div>
+        <a class="btn btn--accent" href="https://apps.apple.com/us/app/mixed-poker-coaching/id6763639650">Get it on the App Store</a>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
-    <div class="site-footer-inner">
-      <a href="mixpoker-privacy.html">Privacy Policy</a>
-      <a href="mixpoker-terms.html">Terms of Service</a>
-      <a href="mixpoker-support.html">Support</a>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="mixpoker.html">
+            <img src="mix-poker/img/logo-128.png" alt="" width="34" height="34">
+            Mix Poker
+          </a>
+          <p style="color: var(--graphite); max-width: 26em">Master the full THORSE mix with elite training tools and guides. A PingSolve LLC app.</p>
+        </div>
+        <div>
+          <h2>Play and learn</h2>
+          <ul>
+            <li><a href="https://apps.apple.com/us/app/mixed-poker-coaching/id6763639650">Mix Poker on the App Store</a></li>
+            <li><a href="https://learnmixpoker.com/">Play on learnmixpoker.com</a></li>
+            <li><a href="https://learnmixpoker.com/how-to-play-mix-poker.html">The THORSE guide</a></li>
+            <li><a href="https://learnmixpoker.com/how-to-train-with-mixed-poker-coaching.html">Pro Training Guide</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Help</h2>
+          <ul>
+            <li><a href="mixpoker-support.html">Support &amp; pricing</a></li>
+            <li><a href="mixpoker-privacy.html">Privacy Policy</a></li>
+            <li><a href="mixpoker-terms.html">Terms of Service</a></li>
+            <li><a href="mailto:support@pingsolveai.com">support@pingsolveai.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>PingSolve</h2>
+          <ul>
+            <li><a href="index.html">More apps</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fine">
+        <span>&copy; 2026 PingSolve LLC. All rights reserved.</span>
+        <span>Practice chips only: free, no cash value.</span>
+      </div>
     </div>
   </footer>
 </body>
