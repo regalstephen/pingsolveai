@@ -357,15 +357,15 @@
         if (!revealObserver) revealObserver = new IntersectionObserver(function (entries) {
           if (still.matches || !mobile.matches || document.hidden) return;
           entries.forEach(function (entry) {
-            if (!entry.isIntersecting) return;
             var spin = entry.target.querySelector('.icon-spin');
-            spin.classList.add('mobile-enter');
-            spin.dataset.revealed = 'true';
-            revealObserver.unobserve(entry.target);
+            // Re-arm offscreen so the same turn plays on the next pass in either
+            // direction. Separate entry/exit thresholds avoid edge flicker.
+            if (!entry.isIntersecting) spin.classList.remove('mobile-enter');
+            else if (entry.intersectionRatio >= 0.35) spin.classList.add('mobile-enter');
           });
-        }, { threshold: 0.35 });
+        }, { threshold: [0, 0.35] });
         icons.forEach(function (ic) {
-          if (!ic.el.dataset.revealed) revealObserver.observe(ic.wrap);
+          revealObserver.observe(ic.wrap);
         });
       }
       start();
