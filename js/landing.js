@@ -5,12 +5,13 @@
 // moving the mouse across it (or near it) gives it spin, which coasts down
 // and then settles facing forward, like the crystal on crystallize.prism-on.tokyo.
 //
-// Runs only with a mouse and without reduced motion; on touch screens and with
-// reduced motion nothing moves and css/landing.css shows the static gradient.
+// Touch screens get lighter ambient motion and passive touch feedback.
+// Reduced motion always leaves the static gradient, regardless of input device.
 (function () {
   'use strict';
 
-  var still = window.matchMedia('(hover: none), (pointer: coarse), (prefers-reduced-motion: reduce)');
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mobile = window.matchMedia('(hover: none), (pointer: coarse)');
   var bg = document.querySelector('.landing-bg');
   var layers = document.querySelectorAll('.landing-bg-layer');
   var glow = document.querySelector('.landing-bg-glow');
@@ -26,7 +27,12 @@
   var useRaf = false;
   requestAnimationFrame(function () { useRaf = true; });
   function nextFrame(cb) {
-    return useRaf ? requestAnimationFrame(cb) : setTimeout(function () { cb(performance.now()); }, 16);
+    return useRaf ? { raf: requestAnimationFrame(cb) } : { timer: setTimeout(function () { cb(performance.now()); }, 16) };
+  }
+  function cancelFrame(frame) {
+    if (!frame) return;
+    if (frame.raf !== undefined) cancelAnimationFrame(frame.raf);
+    else clearTimeout(frame.timer);
   }
 
   // ── State ───────────────────────────────────────────────
@@ -35,6 +41,8 @@
   var glowAt = { x: innerWidth / 2, y: innerHeight / 2 };
   var icons = [];
   var running = false, last = 0;
+  var pendingFrame = null, touchUntil = 0, touchId = null;
+  var revealObserver = null;
 
   // Turn each icon into a front and back face around the same image.
   function buildIcons() {
@@ -71,15 +79,15 @@
   }
 
   function start() {
-    if (running || still.matches) return;
+    if (running || still.matches || document.hidden) return;
     running = true;
     last = performance.now();
-    nextFrame(step);
+    pendingFrame = nextFrame(step);
   }
 
   // ── Input ───────────────────────────────────────────────
   document.addEventListener('pointermove', function (e) {
-    if (still.matches || e.pointerType !== 'mouse') return;
+    if (still.matches || mobile.matches || e.pointerType !== 'mouse') return;
     var dx = e.clientX - mouse.x;
     var dy = e.clientY - mouse.y;
     if (!mouse.seen) { dx = dy = 0; mouse.seen = true; bg.classList.add('is-live'); }
@@ -103,20 +111,67 @@
   }, { passive: true });
 
   document.documentElement.addEventListener('mouseleave', function () {
+    if (mobile.matches || still.matches) return;
     aim.x = aim.y = 0;
     bg.classList.remove('is-live');
     mouse.seen = false;
     start();
   });
 
-  window.addEventListener('scroll', measure, { passive: true });
+  // Never capture pointers or cancel events: native scrolling, zoom and links win.
+  function touchFeedback(e) {
+    mouse.x = glowAt.x = e.clientX;
+    mouse.y = glowAt.y = e.clientY;
+    mouse.seen = true;
+    mouse.energy = 0.35;
+    touchUntil = performance.now() + 650;
+    glow.style.transform = 'translate3d(' + mouse.x + 'px,' + mouse.y + 'px,0)';
+    bg.classList.add('is-live');
+  }
+  document.addEventListener('pointerdown', function (e) {
+    if (still.matches || !mobile.matches || e.pointerType === 'mouse' || !e.isPrimary) return;
+    touchId = e.pointerId;
+    touchFeedback(e);
+  }, { passive: true });
+  document.addEventListener('pointermove', function (e) {
+    if (still.matches || !mobile.matches || e.pointerId !== touchId) return;
+    touchFeedback(e);
+  }, { passive: true });
+  function endTouch(e) {
+    if (e.pointerId !== touchId) return;
+    touchId = null;
+    touchUntil = performance.now() + (e.type === 'pointercancel' ? 0 : 180);
+  }
+  document.addEventListener('pointerup', endTouch, { passive: true });
+  document.addEventListener('pointercancel', endTouch, { passive: true });
+
+  window.addEventListener('scroll', function () {
+    if (!mobile.matches) measure();
+  }, { passive: true });
   window.addEventListener('resize', measure);
 
   // ── Frame ───────────────────────────────────────────────
   function step(now) {
+    pendingFrame = null;
+    if (still.matches || document.hidden) { running = false; return; }
+    if (mobile.matches && now - last < 1000 / 30 - 1) {
+      pendingFrame = nextFrame(step);
+      return;
+    }
     var k = Math.min(3, (now - last) / 16.667);   // 1 at 60 fps
     last = now;
     var busy = false;
+
+    if (mobile.matches) {
+      // Small, slow drift, with a bounded scroll contribution and no layout reads.
+      aim.x = Math.sin(now / 9000) * 0.12;
+      aim.y = Math.cos(now / 11000) * 0.1 - Math.min(1, Math.max(0, window.scrollY) / innerHeight) * 0.16;
+      if (now >= touchUntil) {
+        mouse.seen = false;
+        bg.classList.remove('is-live');
+      }
+      busy = true;
+    }
 
     // Background layers and glow.
     var ease = 1 - Math.pow(1 - 0.07, k);
@@ -134,7 +189,7 @@
     if (Math.abs(mouse.x - glowAt.x) > 0.3 || Math.abs(mouse.y - glowAt.y) > 0.3) busy = true;
 
     // Icons: coast with friction, then a spring brings them back to face front.
-    for (var j = 0; j < icons.length; j++) {
+    for (var j = 0; !mobile.matches && j < icons.length; j++) {
       var ic = icons[j];
       ic.angle += ic.v * k;
       ic.v *= Math.pow(FRICTION, k);
@@ -155,7 +210,7 @@
       if (ic.angle || ic.v) busy = true;
     }
 
-    if (busy) nextFrame(step);
+    if (busy) pendingFrame = nextFrame(step);
     else running = false;
   }
 
@@ -166,23 +221,26 @@
     var canvas = document.querySelector('.landing-bg-rain');
     if (!canvas || !canvas.getContext) return null;
     var ctx = canvas.getContext('2d');
+    if (!ctx) return null;
     var GLYPHS = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789';
     var SIZE = 16;               // px per character cell
     var BASE = 0.09;             // trail opacity away from the cursor
     var HEAD = 0.2;              // leading character opacity away from the cursor
     var PEAK = 0.8;              // extra opacity right under a moving cursor
     var cols = [], w = 0, h = 0, rows = 0, last = 0, on = false;
+    var pending = null;
 
     function glyph() { return GLYPHS.charAt(Math.floor(Math.random() * GLYPHS.length)); }
 
     function newDrop(col, top) {
-      col.len = 8 + Math.floor(Math.random() * 14);
-      col.head = top ? -Math.random() * rows : -Math.random() * 10;
-      col.speed = 0.18 + Math.random() * 0.32;   // rows per 60 fps frame
+      col.len = mobile.matches ? 6 + Math.floor(Math.random() * 7) : 8 + Math.floor(Math.random() * 14);
+      col.head = top ? (mobile.matches ? Math.random() * rows : -Math.random() * rows) : -Math.random() * 10;
+      col.speed = (0.18 + Math.random() * 0.32) * (mobile.matches ? 0.65 : 1);   // rows per 60 fps frame
     }
 
     function size() {
-      var dpr = Math.min(2, window.devicePixelRatio || 1);
+      SIZE = mobile.matches ? 24 : 16;
+      var dpr = Math.min(mobile.matches ? 1.5 : 2, window.devicePixelRatio || 1);
       w = canvas.clientWidth;
       h = canvas.clientHeight;
       canvas.width = Math.round(w * dpr);
@@ -202,13 +260,22 @@
     }
 
     function frame(now) {
+      pending = null;
       if (!on) return;
+      if (mobile.matches && now - last < 1000 / 30 - 1) {
+        pending = nextFrame(frame);
+        return;
+      }
       var k = Math.min(3, (now - last) / 16.667);
       last = now;
       mouse.energy *= Math.pow(0.97, k);
       var live = mouse.seen ? 1 : 0;
       var reach = 170 + 230 * mouse.energy;                    // px around the cursor
       var lift = live * (0.5 + 0.5 * mouse.energy);            // 0..1
+      if (mobile.matches) {
+        reach = 140;
+        lift *= Math.max(0, Math.min(1, (touchUntil - now) / 650)) * 0.65;
+      }
 
       ctx.clearRect(0, 0, w, h);
       for (var i = 0; i < cols.length; i++) {
@@ -235,34 +302,42 @@
           ctx.fillText(col.chars[row], col.x, y);
         }
       }
-      nextFrame(frame);
+      pending = nextFrame(frame);
     }
 
-    window.addEventListener('resize', function () { if (on) size(); });
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) { on = false; }
-      else if (!still.matches && !on) { on = true; last = performance.now(); nextFrame(frame); }
+    window.addEventListener('resize', function () {
+      // Mobile browser chrome resizes during a scroll: don't regenerate rain then.
+      if (on && (!mobile.matches || w !== canvas.clientWidth || Math.abs(h - canvas.clientHeight) > 160)) size();
     });
 
     return {
       start: function () {
-        if (on || still.matches) return;
+        if (on || still.matches || document.hidden) return;
         on = true;
         size();
         last = performance.now();
-        nextFrame(frame);
+        pending = nextFrame(frame);
       },
       stop: function () {
         on = false;
+        cancelFrame(pending);
+        pending = null;
         ctx.clearRect(0, 0, w, h);
       }
     };
   })();
 
-  // ── Mouse vs. touch / reduced motion ────────────────────
+  // ── Input mode, visibility and reduced motion ──────────
   function reset() {
-    if (!still.matches) return;
+    cancelFrame(pendingFrame);
+    pendingFrame = null;
+    running = false;
     if (rain) rain.stop();
+    if (revealObserver) revealObserver.disconnect();
+    touchUntil = 0;
+    touchId = null;
+    mouse.seen = false;
+    mouse.energy = 0;
     drift.x = drift.y = aim.x = aim.y = 0;
     for (var i = 0; i < layers.length; i++) layers[i].style.transform = '';
     bg.classList.remove('is-live');
@@ -270,16 +345,39 @@
       icons[j].angle = icons[j].v = 0;
       icons[j].el.style.transform = '';
       icons[j].el.style.setProperty('--sheen-alpha', 0);
+      icons[j].el.classList.remove('mobile-enter');
     }
   }
-  if (still.addEventListener) still.addEventListener('change', reset);
-  else if (still.addListener) still.addListener(reset);
-
   function wake() {
+    if (still.matches || document.hidden) return;
     buildIcons();
     if (rain) rain.start();
+    if (mobile.matches) {
+      if ('IntersectionObserver' in window) {
+        if (!revealObserver) revealObserver = new IntersectionObserver(function (entries) {
+          if (still.matches || !mobile.matches || document.hidden) return;
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var spin = entry.target.querySelector('.icon-spin');
+            spin.classList.add('mobile-enter');
+            spin.dataset.revealed = 'true';
+            revealObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.35 });
+        icons.forEach(function (ic) {
+          if (!ic.el.dataset.revealed) revealObserver.observe(ic.wrap);
+        });
+      }
+      start();
+    }
   }
-  if (!still.matches) wake();
-  // Start up if a mouse shows up later (for example, a tablet with a trackpad).
-  if (still.addEventListener) still.addEventListener('change', function () { if (!still.matches) wake(); });
+  function sync() { reset(); wake(); }
+  [still, mobile].forEach(function (query) {
+    if (query.addEventListener) query.addEventListener('change', sync);
+    else if (query.addListener) query.addListener(sync);
+  });
+  document.addEventListener('visibilitychange', sync);
+  window.addEventListener('pagehide', reset);
+  window.addEventListener('pageshow', function (e) { if (e.persisted) sync(); });
+  wake();
 })();
