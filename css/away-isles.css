@@ -1,0 +1,107 @@
+/*
+ * Away Isles — the four pages at awayisles*.html (landing, support, privacy, terms).
+ *
+ * The app's own light palette (src/journey/ui.tsx in the tml repo): paper,
+ * meadow green accent, sea-glass sky, sand, amber lantern light. Cormorant
+ * Garamond for headings and DM Sans for text, the same faces the app ships.
+ *
+ * Self-contained on purpose: these pages do not load css/main.css, and every
+ * rule here sits under body.ai, so nothing leaks into the other apps' pages.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;600&display=swap");
+
+.ai {
+  --paper: #F7F4EC;
+  --ink: #23352F;
+  --muted: #4F625B;
+  --line: #D6E3D9;
+  --card: #FFFFFF;
+  --accent: #40734C;
+  --meadow: #E8F2DC;
+  --sky: #E2F2FC;
+  --sea: #D8E9E3;
+  --sand: #F4EBDC;
+  --amber: #916229;
+  --danger: #8D4238;
+  --link: #315A66;
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --text: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --gutter-l: max(16px, env(safe-area-inset-left));
+  --gutter-r: max(16px, env(safe-area-inset-right));
+
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 17px/1.65 var(--text);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+.ai *, .ai *::before, .ai *::after { box-sizing: border-box; }
+.ai a { color: var(--link); }
+.ai a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.ai img { max-width: 100%; height: auto; }
+
+.ai-skip { position: absolute; left: -9999px; }
+.ai-skip:focus { left: 16px; top: 8px; z-index: 10; background: var(--card); padding: 8px 12px; border-radius: 8px; }
+
+.ai-wrap { max-width: 1040px; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.ai-narrow { max-width: 860px; }
+
+.ps-back { font-size: 14px; padding: 10px 0; background: var(--ink); }
+.ps-back a { color: #F5F1E7; text-decoration: none; }
+.ps-back a:hover { text-decoration: underline; }
+
+.ai-top { background: var(--sea); border-bottom: 1px solid var(--line); }
+.ai-top .ai-wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; flex-wrap: wrap; }
+.ai-brand { display: inline-flex; align-items: center; gap: 10px; font: 600 26px/1 var(--display); color: var(--ink); text-decoration: none; }
+.ai-brand img { width: 36px; height: 36px; border-radius: 22.37%; }
+.ai-nav { display: flex; gap: 18px; font-weight: 600; font-size: 15px; }
+.ai-nav a { color: var(--ink); text-decoration: none; }
+.ai-nav a:hover, .ai-nav a[aria-current="page"] { color: var(--accent); text-decoration: underline; }
+
+.ai-legal-hero { background: linear-gradient(180deg, var(--sea) 0%, var(--paper) 240px); padding: 24px 0 48px; }
+.ai-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 8px 24px rgba(35, 53, 47, 0.07); }
+
+.ai-doc { padding: 24px 18px 28px; }
+@media (min-width: 720px) { .ai-doc { padding: 40px 48px 44px; } }
+.ai-doc h1 { font: 600 clamp(2.2rem, 8vw, 3.2rem)/1.05 var(--display); margin: 0 0 0.5rem; text-wrap: balance; }
+.ai-doc h2 { font: 600 1.6rem/1.2 var(--display); margin: 2.2rem 0 0.6rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.ai-doc h3 { font-size: 1.05rem; margin: 1.4rem 0 0.4rem; }
+.ai-doc .meta { color: var(--muted); font-size: 0.95rem; margin: 0 0 1.5rem; }
+.ai-doc ul, .ai-doc ol { padding-left: 1.4rem; }
+.ai-doc li { margin: 0.35rem 0; }
+.ai-doc .caps { text-transform: uppercase; font-weight: 600; font-size: 0.95em; letter-spacing: 0.01em; }
+.ai-doc .notice, .ai-doc .warn, .ai-doc .summary { border-radius: 14px; padding: 18px 20px; margin: 1.5rem 0; }
+.ai-doc .notice { background: var(--sand); border: 1px solid #E6D6BC; }
+.ai-doc .warn { background: #F7E2D8; border: 1px solid #E8C6B6; }
+.ai-doc .summary { background: var(--meadow); border: 1px solid #CFE2BE; }
+.ai-doc .notice h2, .ai-doc .warn h2, .ai-doc .summary h2 { border: 0; margin-top: 0; padding-top: 0; }
+.ai-doc table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; display: block; overflow-x: auto; }
+.ai-doc th, .ai-doc td { border: 1px solid var(--line); padding: 0.55rem 0.7rem; text-align: left; vertical-align: top; min-width: 8rem; }
+.ai-doc th { background: var(--meadow); }
+.ai-doc a { word-break: break-word; }
+.ai-doc .ai-doc-foot { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
+.ai-doc details { border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 10px 0; background: var(--paper); }
+.ai-doc summary { font-weight: 600; cursor: pointer; }
+.ai-doc details[open] summary { margin-bottom: 6px; }
+
+.ai-hero { padding: 56px 0 40px; background: linear-gradient(180deg, var(--sea), var(--paper)); }
+.ai-hero .ai-wrap { display: grid; gap: 32px; align-items: center; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .ai-hero .ai-wrap { grid-template-columns: 1.1fr 0.9fr; } }
+.ai-hero h1 { font: 600 clamp(2.6rem, 8vw, 4rem)/1.02 var(--display); margin: 0 0 12px; text-wrap: balance; }
+.ai-hero p { margin: 0 0 20px; color: var(--muted); max-width: 52ch; font-size: 1.1rem; }
+.ai-hero .art { justify-self: center; width: min(380px, 100%); }
+.ai-hero .art img { border-radius: 22.37%; box-shadow: 0 18px 40px rgba(35, 53, 47, 0.18); }
+.ai-features { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); padding: 32px 0 56px; }
+.ai-features .ai-card { padding: 20px; }
+.ai-features h2 { font: 600 1.45rem/1.2 var(--display); margin: 0 0 6px; }
+.ai-features p { margin: 0; color: var(--muted); }
+
+.ai-foot { background: var(--ink); color: #F5F1E7; padding: 28px 0 calc(28px + env(safe-area-inset-bottom)); font-size: 15px; }
+.ai-foot-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 22px; }
+.ai-foot a { color: #F5F1E7; }
+.ai-foot p { margin: 14px 0 0; color: #C2CEC3; font-size: 13px; }
+
+@media (prefers-reduced-motion: reduce) { .ai * { transition: none !important; animation: none !important; } }
