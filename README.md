@@ -1,21 +1,13 @@
-# App Marketing Website
+# PingSolve website (pingsolveai.com)
 
-A static marketing site for apps published on the App Store. Open `index.html` in a browser or serve the folder with any static server.
+A static site for PingSolve's apps. GitHub Pages publishes `main` to https://pingsolveai.com, so pushing to `main` puts changes live.
 
 ## Structure
 
-- **index.html** — Landing page with app icons (click to open each app’s marketing page).
-- **touchbattle.html** — TouchBattle PVP marketing page (hero, screenshots, App Store CTA).
-- **touchbattle-privacy.html**, **touchbattle-terms.html**, **touchbattle-support.html** — Policy pages; replace placeholder text with your content.
+- **index.html**: landing page with an icon card for each app (styles in `css/landing.css`, motion in `js/landing.js`).
+- **<app>.html**: each app's own page, styled like the app, with its stylesheet in `css/<app>.css` and images in a folder named after the app (for example `hitline/img/`).
+- **<app>-support.html**, **<app>-privacy.html**, **<app>-terms.html**: help and legal pages for apps whose legal pages live here.
+- **touchbattle*.html**: forwards to the Hitline pages. TouchBattle became Hitline; keep these files so old links (including the App Store's older privacy URL) keep working.
+- **sitemap.xml**, **robots.txt**: for search engines. Add a new page to `sitemap.xml` and to the landing page's structured data.
 
-## Assets
-
-- **icon.png** (project root) — Used as the TouchBattle PVP icon on the landing page.
-- **assets/** — Add TouchBattle screenshots here: `Game1.jpg`, `Game2.jpg`, `Game3.jpg`, `Main.jpg`, `Splash.jpg` (see `assets/README.txt`).
-
-## After you’re done
-
-1. Add your Privacy Policy, Terms of Service, and Support Policy text to the corresponding HTML files.
-2. Replace the “Download on the App Store” link in `touchbattle.html` with your real App Store URL when the app is live.
-
-##
+`css/main.css` is the original shared stylesheet; WaitlistPoker's page still uses it.

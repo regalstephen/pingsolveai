@@ -105,3 +105,80 @@
 .ai-foot p { margin: 14px 0 0; color: #C2CEC3; font-size: 13px; }
 
 @media (prefers-reduced-motion: reduce) { .ai * { transition: none !important; animation: none !important; } }
+
+/* ── Landing page (awayisles.html) ──────────────────────────
+ * The night side of the island: the App Store art's deep teal sky and
+ * floating lanterns for the hero and the Plus band, the app's paper
+ * palette everywhere else.
+ */
+.ai { --night: #12333A; --night-2: #0B2328; --lantern: #E8C98F; --on-night: #F5F1E7; --on-night-muted: #BFD0CC; }
+.ai-top--home .ai-btn { padding: 10px 16px; min-height: 40px; font-size: 14px; }
+.ai-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 22px; border-radius: 999px; font: 600 16px/1 var(--text); text-decoration: none; background: var(--accent); color: #fff !important; }
+.ai-btn:hover { background: #335F3E; }
+.ai-btn svg { width: 20px; height: 20px; flex: none; }
+.ai-btn--light { background: transparent; color: var(--on-night) !important; box-shadow: inset 0 0 0 1.5px rgba(245, 241, 231, .6); }
+.ai-btn--light:hover { background: rgba(245, 241, 231, .1); }
+.ai-btn--line { background: transparent; color: var(--accent) !important; box-shadow: inset 0 0 0 1.5px var(--accent); }
+.ai-btn--line:hover { background: var(--meadow); }
+.ai-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+
+.ai-night { position: relative; overflow: hidden; background: radial-gradient(90% 80% at 50% 40%, var(--night), var(--night-2)); color: var(--on-night); }
+.ai-night-hero { text-align: center; padding: clamp(36px, 7vw, 72px) 0 0; }
+.ai-night-hero h1 { font: 600 clamp(2.7rem, 9vw, 5rem)/1.02 var(--display); margin: 0; color: var(--on-night); text-wrap: balance; }
+.ai-night-hero h1 em { font-style: normal; color: var(--lantern); }
+.ai-night-hero .lede { margin: 16px auto 0; max-width: 34em; color: var(--on-night-muted); font-size: clamp(1.05rem, 2.2vw, 1.25rem); text-wrap: pretty; }
+.ai-night-hero .ai-actions { justify-content: center; }
+.ai-night-hero .fine { margin: 14px 0 0; font-size: 14px; color: var(--on-night-muted); }
+.ai-night-hero picture { display: block; margin-top: clamp(8px, 2vw, 24px); }
+.ai-night-hero picture img { display: block; width: 100%; max-width: 1400px; margin: 0 auto; -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 82%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 82%, transparent 100%); }
+
+.ai-sec { padding: clamp(48px, 8vw, 88px) 0; }
+.ai-sec--sea { background: var(--sea); }
+.ai-sec--sand { background: var(--sand); }
+.ai-kicker { margin: 0 0 10px; font-weight: 600; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--amber); }
+.ai-h2 { font: 600 clamp(2rem, 5vw, 2.9rem)/1.08 var(--display); margin: 0; text-wrap: balance; }
+.ai-lede { margin: 14px 0 0; color: var(--muted); max-width: 40em; font-size: 1.1rem; text-wrap: pretty; }
+.ai-head { max-width: 720px; margin-bottom: 32px; }
+
+.ai-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); counter-reset: s; }
+.ai-steps li { counter-increment: s; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; }
+.ai-steps li::before { content: counter(s); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--sand); color: var(--amber); font: 600 1.3rem/1 var(--display); margin-bottom: 12px; }
+.ai-steps h3 { font: 600 1.4rem/1.2 var(--display); margin: 0 0 6px; }
+.ai-steps p { margin: 0; color: var(--muted); }
+
+.ai-split { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 820px) { .ai-split { grid-template-columns: 1fr 1fr; gap: 56px; } .ai-split--flip > :first-child { order: 2; } }
+.ai-phone { width: min(80%, 300px); margin: 0 auto; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 44px rgba(35, 53, 47, .22); }
+.ai-phone img { display: block; }
+.ai-list { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 10px; }
+.ai-list li { position: relative; padding-left: 26px; color: var(--muted); }
+.ai-list li::before { content: ""; position: absolute; left: 4px; top: .45em; width: 10px; height: 13px; border-radius: 3px; background: var(--lantern); box-shadow: 0 0 10px rgba(232, 201, 143, .9); }
+.ai-list b { color: var(--ink); font-weight: 600; }
+
+.ai-shots { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px var(--gutter-l) 20px; scrollbar-width: thin; }
+.ai-shots figure { flex: none; width: 220px; margin: 0; scroll-snap-align: center; }
+.ai-shots img { display: block; border-radius: 18px; box-shadow: 0 8px 20px rgba(35, 53, 47, .14); }
+@media (min-width: 1240px) { .ai-shots { justify-content: center; flex-wrap: wrap; } .ai-shots figure { width: 200px; } }
+
+.ai-islands { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.ai-islands li { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px; text-align: center; }
+.ai-islands img { width: 160px; height: 160px; margin: 0 auto 8px; display: block; }
+.ai-islands h3 { font: 600 1.4rem/1.2 var(--display); margin: 0; }
+.ai-islands p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+
+.ai-plans { display: grid; gap: 16px; margin-top: 28px; }
+@media (min-width: 760px) { .ai-plans { grid-template-columns: 1fr 1fr; } }
+.ai-plan { border-radius: 20px; padding: 24px; background: rgba(245, 241, 231, .06); border: 1px solid rgba(245, 241, 231, .18); }
+.ai-plan--plus { border-color: var(--lantern); box-shadow: 0 0 30px rgba(232, 201, 143, .14); }
+.ai-plan .tag { margin: 0 0 6px; font-weight: 600; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--lantern); }
+.ai-plan h3 { font: 600 1.7rem/1.1 var(--display); margin: 0; color: var(--on-night); }
+.ai-plan .ai-list li { color: var(--on-night-muted); }
+.ai-night .ai-h2 { color: var(--on-night); }
+.ai-night .ai-lede, .ai-night .fine { color: var(--on-night-muted); }
+.ai-night .fine { font-size: 14px; margin-top: 18px; }
+.ai-night a:not(.ai-btn) { color: var(--lantern); }
+
+.ai-facts { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); margin-top: 24px; }
+.ai-facts .ai-card { padding: 20px; }
+.ai-facts h3 { font: 600 1.35rem/1.2 var(--display); margin: 0 0 6px; }
+.ai-facts p { margin: 0; color: var(--muted); font-size: 15px; }
