@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- PingSolve Studio: "your app here". Code braces around a plus, on the site's crystal blues. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3F5BB1"/>
+      <stop offset="0.55" stop-color="#6F86D6"/>
+      <stop offset="1" stop-color="#9AAFEA"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0.25" cy="0.18" r="0.75">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="0.6" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <rect width="512" height="512" fill="url(#shine)"/>
+  <circle cx="256" cy="256" r="96" fill="url(#glow)"/>
+  <g fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M196 144 C164 144 158 162 158 190 L158 226 C158 246 148 256 128 256 C148 256 158 266 158 286 L158 322 C158 350 164 368 196 368"/>
+    <path d="M316 144 C348 144 354 162 354 190 L354 226 C354 246 364 256 384 256 C364 256 354 266 354 286 L354 322 C354 350 348 368 316 368"/>
+    <path d="M256 216 L256 296 M216 256 L296 256"/>
+  </g>
+</svg>

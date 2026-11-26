@@ -1,0 +1,1038 @@
+/*
+ * PingSolve Studio page (custom.html), scoped to body.cx.
+ *
+ * Builds on css/landing.css: the same white-to-whisper-blue background,
+ * digital rain, Public Sans and crystal blues. Adds frosted panels and the
+ * "Pick a problem" blueprint, whose text crystallizes out of rain glyphs
+ * (js/custom.js) and whose steps are joined by a travelling ping.
+ *
+ * Contrast on white / #F0F7FF: --crystal 6.3 / 5.8, --ink 9.8 / 9.1,
+ * --muted 4.9 / 4.6. --crystal-light (2.2) is decoration only, never text.
+ */
+
+body.cx {
+  --ink: #2E3F80;
+  --muted: #5A6FA8;
+  --line: rgba(63, 91, 177, 0.16);
+  --frost: rgba(255, 255, 255, 0.66);
+  --frost-strong: rgba(255, 255, 255, 0.86);
+  --lift: 0 1px 2px rgba(46, 63, 128, 0.06), 0 12px 40px rgba(63, 91, 177, 0.12);
+  --ping-time: 3.6s;
+}
+
+body.cx main {
+  max-width: none;
+  padding: 0;
+}
+
+.cx-wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 4vw, 32px);
+}
+
+.cx-skip {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 10;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--crystal);
+  color: #fff;
+  font-weight: 700;
+}
+.cx-skip:focus { top: 12px; color: #fff; }
+
+body.cx a:focus-visible,
+body.cx button:focus-visible,
+body.cx [tabindex]:focus-visible {
+  outline: 3px solid var(--crystal);
+  outline-offset: 3px;
+}
+
+/* ── Top bar ───────────────────────────────────────────── */
+
+.cx-top-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 72px;
+}
+
+.cx-brand {
+  font-weight: 900;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--crystal);
+}
+.cx-brand span { color: var(--muted); font-weight: 700; }
+.cx-brand:hover { text-decoration: none; color: var(--ink); }
+
+.cx-nav { display: flex; align-items: center; gap: clamp(12px, 3vw, 28px); }
+.cx-brand, .cx-nav-link, .cx-btn { white-space: nowrap; }
+/* On phones the wordmark already links to the apps page. */
+@media (max-width: 480px) { .cx-nav-link { display: none; } }
+
+.cx-nav-link {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.cx-nav-link:hover { color: var(--crystal); }
+
+/* ── Buttons ───────────────────────────────────────────── */
+
+.cx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 26px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+.cx-btn:hover { text-decoration: none; transform: translateY(-1px); }
+.cx-btn:active { transform: translateY(0) scale(0.98); }
+
+.cx-btn--primary {
+  background: var(--crystal);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(63, 91, 177, 0.28);
+}
+.cx-btn--primary:hover { background: #34509F; color: #fff; box-shadow: 0 12px 30px rgba(63, 91, 177, 0.34); }
+
+.cx-btn--ghost {
+  background: var(--frost);
+  color: var(--crystal);
+  border: 1px solid rgba(63, 91, 177, 0.28);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.cx-btn--ghost:hover { color: var(--ink); border-color: var(--crystal); }
+
+.cx-btn--sm { min-height: 40px; padding: 0 18px; font-size: 0.9rem; }
+
+/* ── Hero ──────────────────────────────────────────────── */
+
+.cx-hero {
+  text-align: center;
+  padding-top: clamp(3rem, 9vw, 6.5rem);
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+}
+
+.cx-eyebrow {
+  display: inline-block;
+  margin: 0 0 1.5rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--frost);
+  border: 1px solid var(--line);
+  color: var(--crystal);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cx-hero h1 {
+  margin: 0;
+  font-size: clamp(2.1rem, 8.4vw, 5.75rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--crystal);
+  background: linear-gradient(100deg, var(--crystal) 20%, #6F86D6 55%, var(--crystal-light) 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-wrap: balance;
+}
+.cx-hero h1 span { display: block; }
+
+.cx-lede {
+  max-width: 38rem;
+  margin: 1.75rem auto 0;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 1.55;
+  font-weight: 500;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.cx-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2.25rem;
+}
+
+.cx-note {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+/* ── Pick a problem ────────────────────────────────────── */
+
+.cx-solve { padding-bottom: clamp(3rem, 8vw, 5rem); scroll-margin-top: 24px; }
+
+.cx-solve-head { text-align: center; max-width: 40rem; margin: 0 auto 2rem; }
+.cx-solve-head h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--crystal);
+  text-wrap: balance;
+}
+.cx-solve-head p { margin: 0.75rem 0 0; color: var(--ink); font-weight: 500; }
+
+.cx-panel {
+  padding: clamp(16px, 3vw, 28px);
+  border-radius: 28px;
+  background: var(--frost);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: var(--lift);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+
+/* Who it's for: a segmented switch with a sliding white thumb. */
+.cx-aud {
+  position: relative;
+  display: inline-flex;
+  margin-bottom: 14px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(63, 91, 177, 0.08);
+  border: 1px solid var(--line);
+}
+.cx-aud-thumb {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  width: 0;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(46, 63, 128, 0.08), 0 4px 12px rgba(63, 91, 177, 0.16);
+  transition: transform 0.35s cubic-bezier(.2, .7, .2, 1), width 0.35s cubic-bezier(.2, .7, .2, 1);
+}
+.cx-aud-btn {
+  position: relative;
+  z-index: 1;
+  min-height: 40px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.cx-aud-btn:hover { color: var(--ink); }
+.cx-aud-btn[aria-pressed="true"] { color: var(--crystal); }
+
+.cx-tag--coaching { background: var(--crystal); color: #fff; }
+
+.cx-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: clamp(16px, 3vw, 24px);
+}
+
+.cx-tab {
+  flex: 0 1 auto;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--frost-strong);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.cx-tab:hover { border-color: var(--crystal); color: var(--crystal); }
+.cx-tab:active { transform: scale(0.97); }
+.cx-tab[aria-selected="true"] {
+  background: var(--crystal);
+  border-color: var(--crystal);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(63, 91, 177, 0.28);
+}
+
+/* The blueprint: a white sheet with a faint grid, like a plan on paper. */
+.cx-blueprint {
+  position: relative;
+  padding: clamp(20px, 3.5vw, 36px);
+  border-radius: 20px;
+  background:
+    linear-gradient(rgba(63, 91, 177, 0.05) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, rgba(63, 91, 177, 0.05) 1px, transparent 1px) 0 0 / 24px 24px,
+    rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.cx-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cx-bp-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+
+.cx-tag {
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: rgba(63, 91, 177, 0.08);
+  color: var(--crystal);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cx-bp-title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+/* Steps: four columns joined by a line; one column per row on phones. */
+.cx-flow {
+  --gap: 16px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+  margin: clamp(28px, 4vw, 40px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The track runs from the first port to the last. Column centres sit at
+   half a column in from each edge. */
+.cx-track {
+  position: absolute;
+  top: 0;
+  left: calc((100% - 3 * var(--gap)) / 8);
+  right: calc((100% - 3 * var(--gap)) / 8);
+  height: 2px;
+  margin-top: -1px;
+  background: linear-gradient(90deg, var(--crystal-light), var(--crystal));
+  border-radius: 2px;
+  transform-origin: left center;
+  z-index: 0;
+}
+
+.cx-ping {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: var(--crystal);
+  box-shadow: 0 0 0 4px rgba(63, 91, 177, 0.16), 0 0 18px 4px rgba(111, 134, 214, 0.55);
+  opacity: 0;
+}
+
+.cx-node {
+  position: relative;
+  z-index: 1;
+  padding: 26px 18px 20px;
+  border-radius: 16px;
+  background: var(--frost-strong);
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 2px rgba(46, 63, 128, 0.05);
+}
+
+.cx-port {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--crystal-light);
+}
+
+.cx-node-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--crystal);
+}
+
+.cx-node-text {
+  position: relative;
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* The person's step stands out: decisions stay with people. */
+.cx-node--human {
+  background: #fff;
+  border: 2px solid var(--crystal);
+  box-shadow: 0 8px 24px rgba(63, 91, 177, 0.14);
+}
+.cx-node--human .cx-port { border-color: var(--crystal); background: var(--crystal); }
+.cx-node--human .cx-node-label::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--crystal);
+  vertical-align: 1px;
+}
+
+.cx-bp-foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px 32px;
+  align-items: start;
+  margin-top: clamp(24px, 3.5vw, 32px);
+  padding-top: clamp(20px, 3vw, 24px);
+  border-top: 1px dashed var(--line);
+}
+
+.cx-tools-label,
+.cx-goal > span:first-child {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cx-tool-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.cx-tool-list li {
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cx-goal { margin: 0; color: var(--ink); font-weight: 700; font-size: 1.05rem; line-height: 1.45; }
+.cx-goal [data-decode] { position: relative; display: inline-block; }
+
+.cx-proof {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.cx-proof a { color: var(--crystal); text-decoration: underline; text-underline-offset: 3px; }
+.cx-proof a:hover { color: var(--ink); }
+
+.cx-else { margin: 18px 4px 0; color: var(--ink); font-weight: 500; }
+.cx-else a { color: var(--crystal); font-weight: 700; }
+
+
+/* ── Crystallize: text decoding out of rain glyphs ───────
+   The real words stay in place (and are what screen readers get); while
+   decoding they turn transparent and a glyph overlay sits on top. */
+
+[data-decode] { position: relative; }
+[data-decode].is-decoding { color: transparent; }
+.cx-decode-overlay {
+  position: absolute;
+  inset: 0;
+  color: var(--ink);
+  pointer-events: none;
+}
+.cx-decode-overlay .g { color: var(--crystal-light); }
+
+/* Line draws in, then ports light as the ping passes. */
+.cx-blueprint.is-building .cx-track { animation: cx-draw 700ms cubic-bezier(.2, .7, .2, 1) both; }
+.cx-blueprint.is-building .cx-node,
+.cx-blueprint.is-building .cx-tool-list li {
+  animation: cx-rise 520ms cubic-bezier(.2, .7, .2, 1) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 120ms);
+}
+
+.cx-blueprint.is-pinging .cx-ping { animation: cx-ping-x var(--ping-time) linear infinite; }
+.cx-blueprint.is-pinging .cx-port {
+  animation: cx-port var(--ping-time) linear infinite;
+  /* The ping reaches port i at 6% + i/3 of 70% of the loop. */
+  animation-delay: calc(var(--ping-time) * (0.06 + var(--i) * 0.2333));
+}
+.cx-blueprint.is-paused .cx-ping,
+.cx-blueprint.is-paused .cx-port { animation-play-state: paused; }
+
+@keyframes cx-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes cx-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@keyframes cx-ping-x {
+  0% { left: 0; opacity: 0; }
+  6% { left: 0; opacity: 1; }
+  76% { left: 100%; opacity: 1; }
+  84%, 100% { left: 100%; opacity: 0; }
+}
+@keyframes cx-ping-y {
+  0% { top: 0; opacity: 0; }
+  6% { top: 0; opacity: 1; }
+  76% { top: 100%; opacity: 1; }
+  84%, 100% { top: 100%; opacity: 0; }
+}
+@keyframes cx-port {
+  0% { box-shadow: 0 0 0 6px rgba(63, 91, 177, 0.22), 0 0 16px 2px rgba(111, 134, 214, 0.6); border-color: var(--crystal); }
+  14%, 100% { box-shadow: 0 0 0 0 rgba(63, 91, 177, 0); }
+}
+
+/* ── Phones: steps stack, the track runs down the left ─── */
+
+@media (max-width: 760px) {
+  .cx-aud { display: flex; }
+  .cx-aud-btn { flex: 1 1 0; padding: 0 6px; font-size: 0.85rem; }
+
+  .cx-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-inline: calc(-1 * clamp(16px, 3vw, 28px));
+    padding: 2px clamp(16px, 3vw, 28px) 6px;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+  .cx-tabs::-webkit-scrollbar { display: none; }
+  .cx-tab { flex: 0 0 auto; padding: 0 16px; scroll-snap-align: start; }
+
+  .cx-flow { grid-template-columns: 1fr; --gap: 12px; padding-left: 28px; }
+  .cx-track {
+    top: 24px;
+    bottom: 24px;
+    left: 7px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    margin: 0;
+    background: linear-gradient(180deg, var(--crystal-light), var(--crystal));
+    transform-origin: center top;
+  }
+  .cx-ping { top: 0; left: 50%; margin: -6px 0 0 -6px; }
+  .cx-blueprint.is-pinging .cx-ping { animation-name: cx-ping-y; }
+  .cx-blueprint.is-building .cx-track { animation-name: cx-draw-y; }
+  .cx-node { padding: 16px 16px 16px; }
+  .cx-port { top: 24px; left: -28px; margin: -8px 0 0 0; }
+
+  .cx-bp-foot { grid-template-columns: 1fr; }
+}
+
+@keyframes cx-draw-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+@media (hover: none), (pointer: coarse) {
+  .cx-btn:hover, .cx-tab:hover { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cx-btn, .cx-tab, .cx-aud-thumb, .cx-aud-btn { transition: none; }
+  .cx-btn:hover, .cx-btn:active, .cx-tab:active { transform: none; }
+  .cx-blueprint .cx-track,
+  .cx-blueprint .cx-node,
+  .cx-blueprint .cx-tool-list li,
+  .cx-blueprint .cx-port { animation: none !important; }
+  .cx-ping { display: none; }
+}
+
+/* ══ Sections after the demo ══════════════════════════════
+   Two ways to work with us, our apps as proof, how it works, promises,
+   FAQ and the contact form. Same frosted surfaces, crystal type and
+   port-and-line motif as the blueprint. */
+
+.cx-section {
+  padding-top: clamp(3.5rem, 9vw, 6.5rem);
+  scroll-margin-top: 16px;
+}
+
+.cx-head { text-align: center; max-width: 42rem; margin: 0 auto clamp(2rem, 4vw, 3rem); }
+.cx-kicker {
+  margin: 0 0 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--crystal);
+}
+.cx-head h2,
+.cx-contact-intro h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--crystal);
+  text-wrap: balance;
+}
+.cx-head p { margin: 0.75rem 0 0; color: var(--ink); font-weight: 500; text-wrap: pretty; }
+
+.cx-section h3 { margin: 0; color: var(--ink); }
+
+/* ── Two ways ── */
+
+.cx-ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+
+.cx-way {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 4vw, 40px);
+  border-radius: 24px;
+  background: var(--frost);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: var(--lift);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+.cx-way .cx-tag { align-self: flex-start; }
+.cx-way h3 { margin: 18px 0 10px; font-size: clamp(1.5rem, 3vw, 1.9rem); font-weight: 900; color: var(--crystal); }
+.cx-way > p { margin: 0; color: var(--ink); font-weight: 500; line-height: 1.55; }
+
+.cx-checks { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.cx-checks li {
+  position: relative;
+  padding-left: 32px;
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.45;
+}
+.cx-checks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(63, 91, 177, 0.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233F5BB1' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 14px no-repeat;
+}
+
+.cx-way-fit {
+  margin: 0;
+  padding-top: 22px;
+  border-top: 1px dashed var(--line);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.cx-way-fit span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+/* Keeps the "Good for" rule level across both cards. */
+.cx-checks { flex: 1 0 auto; margin-bottom: 24px; }
+
+/* The coaching card is the blue one, like its "Setup + coaching" tag.
+   White text on #3F5BB1 to #4A64BC is 6.3 to 5.5 : 1. */
+.cx-way--with {
+  background: linear-gradient(160deg, #3F5BB1, #4A64BC);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 18px 48px rgba(63, 91, 177, 0.3);
+}
+.cx-way--with h3,
+.cx-way--with > p,
+.cx-way--with .cx-checks li,
+.cx-way--with .cx-way-fit,
+.cx-way--with .cx-way-fit span { color: #fff; }
+.cx-way--with .cx-tag--coaching { background: #fff; color: var(--crystal); }
+.cx-way--with .cx-checks li::before {
+  background-color: rgba(255, 255, 255, 0.18);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E");
+}
+.cx-way--with .cx-way-fit { border-top-color: rgba(255, 255, 255, 0.35); }
+
+/* ── Proof: our apps ── */
+
+.cx-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cx-app {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  height: 100%;
+  padding: 18px;
+  border-radius: 20px;
+  background: var(--frost-strong);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.cx-app:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  border-color: rgba(63, 91, 177, 0.4);
+  box-shadow: var(--lift);
+}
+
+body.cx .cx-app .app-card-icon {
+  flex: none;
+  width: 72px;
+  height: 72px;
+  margin: 0;
+  border-radius: 16px;
+}
+body.cx .cx-app .icon-face { border-radius: 16px; }
+
+.cx-app-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.cx-app-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+.cx-app-plat {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(63, 91, 177, 0.08);
+  color: var(--crystal);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.cx-app-text { font-size: 0.93rem; line-height: 1.5; font-weight: 500; color: var(--ink); }
+
+.cx-more { margin: 20px 0 0; text-align: center; font-weight: 700; }
+.cx-more a { color: var(--crystal); }
+
+/* ── How it works: numbered ports on a line, like the blueprint ── */
+
+.cx-steps {
+  --gap: 20px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cx-steps::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  right: calc((100% - 3 * var(--gap)) / 4 - 22px);
+  height: 2px;
+  margin-top: -1px;
+  background: linear-gradient(90deg, var(--crystal-light), var(--crystal));
+  border-radius: 2px;
+}
+.cx-step { position: relative; }
+.cx-step-num {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--crystal);
+  color: var(--crystal);
+  font-weight: 900;
+  font-size: 1.05rem;
+  box-shadow: 0 0 0 6px rgba(240, 247, 255, 0.9);
+}
+.cx-step:last-child .cx-step-num { background: var(--crystal); color: #fff; }
+.cx-step h3 { margin: 18px 0 8px; font-size: 1.15rem; font-weight: 800; }
+.cx-step p { margin: 0; color: var(--ink); font-weight: 500; line-height: 1.55; }
+
+/* ── Promises ── */
+
+.cx-promises {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cx-promises li {
+  padding: 22px;
+  border-radius: 20px;
+  background: var(--frost);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 1px 2px rgba(46, 63, 128, 0.05);
+}
+.cx-icon {
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  border-radius: 12px;
+  background: rgba(63, 91, 177, 0.1);
+  fill: none;
+  stroke: var(--crystal);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cx-promises h3 { margin: 16px 0 6px; font-size: 1.05rem; font-weight: 800; }
+.cx-promises p { margin: 0; font-size: 0.95rem; line-height: 1.55; font-weight: 500; color: var(--ink); }
+
+/* ── FAQ ── */
+
+.cx-faq {
+  max-width: 760px;
+  margin: 0 auto;
+  border-radius: 24px;
+  background: var(--frost-strong);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.cx-faq details + details { border-top: 1px solid var(--line); }
+.cx-faq summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  padding: 16px 56px 16px 22px;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  list-style: none;
+}
+.cx-faq summary::-webkit-details-marker { display: none; }
+.cx-faq summary::after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin-top: -11px;
+  border-radius: 50%;
+  background: rgba(63, 91, 177, 0.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233F5BB1' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 7v10M7 12h10'/%3E%3C/svg%3E") center / 14px no-repeat;
+  transition: transform 0.2s ease;
+}
+.cx-faq details[open] summary::after { transform: rotate(45deg); }
+.cx-faq summary:hover { color: var(--crystal); }
+.cx-faq summary:focus-visible { outline-offset: -3px; }
+.cx-faq details p {
+  margin: 0;
+  padding: 0 22px 20px;
+  max-width: 62ch;
+  color: var(--ink);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* ── Contact ── */
+
+.cx-contact {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(24px, 5vw, 56px);
+  align-items: start;
+  padding-bottom: clamp(3.5rem, 9vw, 6rem);
+}
+.cx-contact-intro { position: sticky; top: 24px; }
+.cx-contact-intro h2 { font-size: clamp(1.9rem, 4.4vw, 3rem); }
+.cx-contact-intro p { margin: 1rem 0 0; color: var(--ink); font-weight: 500; line-height: 1.55; }
+.cx-contact-intro .cx-kicker { margin: 0 0 0.75rem; color: var(--crystal); font-weight: 800; }
+.cx-contact-direct { font-size: 0.95rem; }
+.cx-contact-direct a { color: var(--crystal); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+.cx-form {
+  display: grid;
+  gap: 20px;
+  padding: clamp(20px, 4vw, 32px);
+  border-radius: 24px;
+  background: var(--frost-strong);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: var(--lift);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+
+.cx-field { margin: 0; padding: 0; border: 0; min-width: 0; }
+.cx-field > label,
+.cx-field > legend {
+  display: block;
+  margin-bottom: 8px;
+  padding: 0;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.cx-opt { color: var(--muted); font-weight: 600; }
+
+.cx-form input[type="text"],
+.cx-form textarea,
+.cx-form select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(63, 91, 177, 0.3);
+  background: #fff;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.cx-form textarea { resize: vertical; min-height: 116px; }
+.cx-form ::placeholder { color: var(--muted); opacity: 1; }
+.cx-form input[type="text"]:hover,
+.cx-form textarea:hover,
+.cx-form select:hover { border-color: var(--crystal); }
+.cx-form input[type="text"]:focus-visible,
+.cx-form textarea:focus-visible,
+.cx-form select:focus-visible {
+  outline: none;
+  border-color: var(--crystal);
+  box-shadow: 0 0 0 3px rgba(63, 91, 177, 0.35);
+}
+.cx-form [aria-invalid="true"] { border-color: #B42318; }
+.cx-form [aria-invalid="true"]:focus-visible { box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.25); }
+
+.cx-error { margin: 8px 0 0; color: #B42318; font-size: 0.9rem; font-weight: 700; }
+
+.cx-choices { display: grid; gap: 8px; }
+.cx-choice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(63, 91, 177, 0.24);
+  background: #fff;
+  color: var(--ink);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+.cx-choice:hover { border-color: var(--crystal); }
+.cx-choice input { width: 18px; height: 18px; margin: 0; accent-color: var(--crystal); flex: none; }
+.cx-choice:has(input:checked) { border-color: var(--crystal); background: rgba(63, 91, 177, 0.06); box-shadow: inset 0 0 0 1px var(--crystal); }
+.cx-choice:has(input:focus-visible) { outline: 3px solid var(--crystal); outline-offset: 2px; }
+
+.cx-field-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 16px; }
+
+.cx-submit { justify-self: start; border: 0; cursor: pointer; font-family: inherit; }
+.cx-form-note { margin: -8px 0 0; color: var(--muted); font-size: 0.88rem; font-weight: 600; }
+
+.cx-status {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(63, 91, 177, 0.07);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-weight: 500;
+}
+.cx-status[hidden] { display: none; }
+.cx-status p { margin: 0; line-height: 1.5; }
+.cx-status .cx-btn { cursor: pointer; font-family: inherit; }
+.cx-copied { color: var(--crystal); font-weight: 700; font-size: 0.9rem; }
+.cx-copied:empty { display: none; }
+
+body.cx .site-footer { margin-top: 0; }
+
+/* ── Tablet and phone ── */
+
+@media (max-width: 960px) {
+  .cx-proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cx-promises { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cx-contact { grid-template-columns: 1fr; }
+  .cx-contact-intro { position: static; text-align: center; max-width: 36rem; margin: 0 auto; }
+}
+
+@media (max-width: 760px) {
+  .cx-ways { grid-template-columns: 1fr; }
+  .cx-proof-grid { grid-template-columns: 1fr; }
+
+  .cx-steps { grid-template-columns: 1fr; --gap: 28px; }
+  .cx-steps::before {
+    top: 22px;
+    bottom: 22px;
+    left: 22px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    margin: 0 0 0 -1px;
+    background: linear-gradient(180deg, var(--crystal-light), var(--crystal));
+  }
+  .cx-step { padding-left: 64px; min-height: 44px; }
+  .cx-step-num { position: absolute; left: 0; top: 0; }
+  .cx-step h3 { margin-top: 8px; }
+
+  .cx-field-row { grid-template-columns: 1fr; }
+  .cx-submit { justify-self: stretch; }
+}
+
+@media (max-width: 520px) {
+  .cx-promises { grid-template-columns: 1fr; }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cx-app:hover { transform: none; box-shadow: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cx-app, .cx-faq summary::after, .cx-choice,
+  .cx-form input, .cx-form textarea, .cx-form select { transition: none; }
+  .cx-app:hover { transform: none; }
+}

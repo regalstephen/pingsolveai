@@ -115,6 +115,54 @@ body.landing .landing-hero p {
   letter-spacing: 0.06em;
 }
 
+/* Link to the PingSolve Studio page (custom.html), above the headline. */
+body.landing .studio-pill {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 10px;
+  max-width: 100%;
+  margin-bottom: 1.75rem;
+  padding: 6px 16px 6px 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(63, 91, 177, 0.18);
+  box-shadow: 0 6px 20px rgba(63, 91, 177, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #2E3F80;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+body.landing .studio-pill:hover {
+  border-color: var(--crystal);
+  box-shadow: 0 10px 26px rgba(63, 91, 177, 0.18);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+body.landing .studio-pill:focus-visible { outline: 3px solid var(--crystal); outline-offset: 3px; }
+body.landing .studio-pill-tag {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--crystal);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+body.landing .studio-pill-arrow { color: var(--crystal); transition: transform 0.2s ease; }
+body.landing .studio-pill:hover .studio-pill-arrow { transform: translateX(3px); }
+@media (max-width: 480px) {
+  body.landing .studio-pill { flex-wrap: nowrap; gap: 8px; padding: 5px 12px 5px 5px; font-size: 0.8rem; }
+  body.landing .studio-pill-tag { padding: 5px 9px; font-size: 0.64rem; white-space: nowrap; }
+  body.landing .studio-pill-text { white-space: nowrap; }
+  body.landing .studio-pill-more { display: none; }
+}
+
 body.landing .app-card { color: var(--crystal); }
 body.landing .app-card-name {
   font-weight: 700;
@@ -202,7 +250,11 @@ body.landing .app-card-icon.is-spinnable {
   .landing-bg-glow,
   .landing-bg-rain { display: none; }
   .icon-spin.mobile-enter { animation: none; }
-  body.landing .app-card { transition: none; }
+  body.landing .app-card,
+  body.landing .studio-pill,
+  body.landing .studio-pill-arrow { transition: none; }
+  body.landing .studio-pill:hover,
+  body.landing .studio-pill:hover .studio-pill-arrow { transform: none; }
   body.landing .app-card:hover,
   body.landing .app-card:active { transform: none; }
 }
